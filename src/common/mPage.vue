@@ -132,7 +132,6 @@
         ready () {
             let contentHeight = this.$els.footer.offsetTop - this.$els.header.offsetHeight;
             this.$els.content.style.minHeight = contentHeight + 'px';
-            window.console.log(this.$els.content, this.$els.footer.offsetTop, this.$els.header.offsetHeight, contentHeight, this.$els.content.style.minHeight);
         }
     };
 </script>
