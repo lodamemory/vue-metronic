@@ -4,15 +4,15 @@
 <script>
     export default {
         props: {
-            isCircle: {
+            'isCircle': {
                 default: false,
                 type: Boolean
             },
-            colorType: {
+            'colorType': {
                 default: 'primary',
                 type: String
             },
-            size: {
+            'size': {
                 type: String
             }
         },

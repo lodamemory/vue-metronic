@@ -1,9 +1,10 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import routerMap from './router';
-import './assets/global/plugins/bootstrap/css/bootstrap.css';
-import './assets/global/plugins/font-awesome/css/font-awesome.css';
-import './assets/global/plugins/simple-line-icons/simple-line-icons.css';
+import './assets/global/plugins/bootstrap/css/bootstrap.min.css';
+import './assets/global/plugins/bootstrap-toastr/toastr.min.css';
+import './assets/global/plugins/font-awesome/css/font-awesome.min.css';
+import './assets/global/plugins/simple-line-icons/simple-line-icons.min.css';
 import './assets/global/css/components.css';
 import './assets/global/css/plugins.css';
 import './assets/admin/layout/css/layout.css';

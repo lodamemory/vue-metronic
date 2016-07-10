@@ -1,6 +1,6 @@
 <template>
 <div class="page-header-fixed page-quick-sidebar-over-content page-header-fixed-mobile page-footer-fixed">
-    <div class="page-header navbar navbar-fixed-top">
+    <div class="page-header navbar navbar-fixed-top" v-el:header>
         <!-- BEGIN HEADER INNER -->
         <div class="page-header-inner">
             <!-- BEGIN LOGO -->
@@ -75,7 +75,7 @@
         <!-- END SIDEBAR -->
         <!-- BEGIN CONTENT -->
         <div class="page-content-wrapper">
-            <div class="page-content">
+            <div class="page-content" v-el:content >
                 <router-view></router-view>
             </div>
         </div>
@@ -83,7 +83,7 @@
     </div>
     <!-- END CONTAINER --> 
     <!-- BEGIN FOOTER -->
-    <div class="page-footer">
+    <div class="page-footer" v-el:footer>
         <div class="page-footer-inner">
              2014 &copy; Metronic by keenthemes.
         </div>
@@ -128,6 +128,10 @@
                 enterClass: 'fadeIn',
                 leaveClass: 'fadeOut'
             }
+        },
+        ready () {
+            let contentHeight = this.$els.footer.offsetTop - this.$els.header.offsetHeight;
+            this.$els.content.style.minHeight = contentHeight + 'px';
         }
     };
 </script>
