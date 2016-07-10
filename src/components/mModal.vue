@@ -1,4 +1,4 @@
-<template>
+    <template>
     <div class="modal mshow animated" :class="modalClass" :transition="effect+'1'" v-show="show" >
         <div class="modal-dialog" :class="dialogClass">
             <div class="modal-content animated" :transition="effect+'2'" v-show="show">
@@ -97,7 +97,7 @@
 </script>
 <style lang="css">
     .modal.in {
-      background-color: rgba(0,0,0,0.5);
+        background-color: rgba(0,0,0,0.5);
     }
     .modal.mshow {
         display: block;
