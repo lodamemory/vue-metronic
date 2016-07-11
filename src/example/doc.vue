@@ -14,7 +14,8 @@
                       subMenu: [
                           {name: 'Buttons', url: 'buttons', icon: 'icon-bar-chart'},
                           {name: 'Alert', url: 'alert', icon: 'icon-bulb'},
-                          {name: 'Modal', url: 'modal', icon: 'icon-graph'}
+                          {name: 'Modal', url: 'modal', icon: 'icon-graph'},
+                          {name: 'Select', url: 'select', icon: 'icon-graph'}
                       ]
                     },
                     { name: 'Dashboard',
