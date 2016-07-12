@@ -24,7 +24,7 @@
     <div class="row">
         <div class="col-md-12">
             <m-portlet :title="'Select'" :color-type="5">
-                <m-select></m-select>
+                <m-select :data="sData"></m-select>
             </m-portlet>
         </div>
         
@@ -39,7 +39,11 @@
         components: { mPortlet, mSelect, mButton },
         data () {
             return {
-                aShow: false
+                aShow: false,
+                sData: [
+                    {'code': 1, 'name': '我是哈哈哈'},
+                    {'code': 2, 'name': '我是呵呵呵'}
+                ]
             };
         }
     };
