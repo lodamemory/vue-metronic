@@ -10,7 +10,10 @@ cnpm install
 #运行
 npm run dev
 
-#访问地址
+#DOC访问地址
+[Demo Page](https://lodamemory.github.io/vue-metronic/#!/doc)
+
+#开发运行地址
 http://localhost:8088/#!/doc
 
 #打包
