@@ -21,13 +21,15 @@
 
 <template>
     <div class="datepicker">
-        <input class="form-control datepicker-input" :class="{'with-reset-button': showResetButton}" type="text"
-                v-bind:style="{width:width}"
-                @click="inputClick"
-                v-model="value"/>
-        <button v-if="showResetButton" type="button" class="close" @click="value = ''">
-            <span>&times;</span>
-        </button>
+        <div class="input-group input-medium date date-picker" v-bind:style="{width:width}" @click="inputClick" >
+            <input type="text" class="form-control" v-model="value" readonly="">
+            <span class="input-group-btn" v-if="showResetButton">
+                <button class="btn default date-reset" type="button" @click.stop="value = ''"><i class="fa fa-times"></i></button>
+            </span>
+            <span class="input-group-btn">
+            <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+            </span>
+        </div>
         <div class="datepicker-popup" v-show="displayDayView">
             <div class="datepicker-inner">
                 <div class="datepicker-body">
@@ -94,7 +96,7 @@ export default {
             default: ''
         },
         format: {
-            default: 'MM/dd/yyyy'
+            default: 'yyyy-MM-dd'
         },
         disabledDaysOfWeek: {
             type: Array,
