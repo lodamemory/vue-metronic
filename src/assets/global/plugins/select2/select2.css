@@ -131,7 +131,7 @@ Version: 3.4.6 Timestamp: Sat Mar 22 22:30:15 EDT 2014
 .select2-drop {
     width: 100%;
     margin-top: -1px;
-    //position: absolute;
+    position: absolute;
     z-index: 9999;
     top: 100%;
 
