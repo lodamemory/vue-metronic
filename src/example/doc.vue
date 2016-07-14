@@ -12,11 +12,11 @@
                       url: '',
                       icon: 'icon-diamond',
                       subMenu: [
-                          {name: 'Buttons', url: 'buttons', icon: 'icon-bar-chart'},
-                          {name: 'Alert', url: 'alert', icon: 'icon-bulb'},
-                          {name: 'Modal', url: 'modal', icon: 'icon-graph'},
-                          {name: 'Select', url: 'select', icon: 'icon-graph'},
-                          {name: 'Picker', url: 'picker', icon: 'icon-graph'}
+                          {name: 'Buttons', url: 'buttons', icon: ''},
+                          {name: 'Alert', url: 'alert', icon: ''},
+                          {name: 'Modal', url: 'modal', icon: ''},
+                          {name: 'Select', url: 'select', icon: ''},
+                          {name: 'Picker', url: 'picker', icon: ''}
                       ]
                     },
                     { name: 'Dashboard',
