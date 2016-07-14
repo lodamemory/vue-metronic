@@ -23,7 +23,7 @@
     <div class="datepicker">
         <div class="input-group input-medium date date-picker" v-bind:style="{width:width}" @click="inputClick" >
             <input type="text" class="form-control" v-model="value" readonly="">
-            <span class="input-group-btn" v-if="showResetButton">
+            <span class="input-group-btn" v-if="cleanButton">
                 <button class="btn default date-reset" type="button" @click.stop="value = ''"><i class="fa fa-times"></i></button>
             </span>
             <span class="input-group-btn">
@@ -86,8 +86,7 @@
 </template>
 
 <script>
-// import EventListener from './utils/EventListener.js'
-
+import EventListener from './util/eventListener.js';
 export default {
     props: {
         value: {
@@ -108,7 +107,7 @@ export default {
             type: String,
             default: '200px'
         },
-        showResetButton: {
+        cleanButton: {
             type: Boolean,
             default: false
         }
@@ -344,12 +343,12 @@ export default {
     ready () {
         this.$dispatch('child-created', this);
         this.currDate = this.parse(this.value) || this.parse(new Date());
-        // this._closeEvent = EventListener.listen(window, 'click', (e)=> {
-        //     if (!this.$el.contains(e.target)) this.close()
-        // })
+        this._closeEvent = EventListener.listen(window, 'click', (e) => {
+            if (!this.$el.contains(e.target)) this.close();
+        });
     },
     beforeDestroy () {
-        if (this._closeEvent) this._closeEvent.remove();
+        this._closeEvent.remove();
     }
 };
 </script>

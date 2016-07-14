@@ -24,12 +24,14 @@
     <div class="row">
         <div class="col-md-12">
             <m-portlet :title="'Select'" :color-type="5">
-                <m-select :data="sData" :result.sync="sResult1" :size="'large'" :label="'医疗机构：'"></m-select>
-                <m-select :data="sData" :result.sync="sResult2"></m-select>
-                <m-select :data="sData" :result.sync="sResult1" :size="'small'" :label="'医疗机构：'"></m-select>
-                <m-select :data="sData" :result.sync="sResult2" :size="'xsmall'"></m-select>
+                <m-select :data="sData" :result.sync="sResult1" :size="'large'" :label="'超大下拉选择：'"></m-select>
+                <m-select :data="sData" :result.sync="sResult2" :label="'正常下拉选择：'"></m-select>
+                <m-select :data="sData" :result.sync="sResult3" :size="'small'" :label="'小型下拉选择：'"></m-select>
+                <m-select :data="sData" :result.sync="sResult4" :size="'xsmall'" :label="'超小下拉选择：'"></m-select>
                 <div>{{sResult1.code}} {{sResult1.name}}</div>
                 <div>{{sResult2.code}} {{sResult2.name}}</div>
+                <div>{{sResult3.code}} {{sResult3.name}}</div>
+                <div>{{sResult4.code}} {{sResult4.name}}</div>
             </m-portlet>
         </div>
         
@@ -51,7 +53,9 @@
                     {'code': 4, 'name': '我是哦哦哦'}
                 ],
                 sResult1: {},
-                sResult2: {}
+                sResult2: {},
+                sResult3: {},
+                sResult4: {}
             };
         }
     };

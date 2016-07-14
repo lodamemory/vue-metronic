@@ -1,7 +1,7 @@
 <template>
     <!-- BEGIN PAGE HEADER-->
     <h3 class="page-title">
-    Example Select Page <small>example Select page</small>
+    Example Picker Page <small>example Picker page</small>
     </h3>
     <div class="page-bar">
         <ul class="page-breadcrumb">
@@ -15,7 +15,7 @@
                 <i class="fa fa-angle-right"></i>
             </li>
             <li>
-                <a href="#">Example Select Page</a>
+                <a href="#">Example Picker Page</a>
             </li>
         </ul>
     </div>
@@ -23,8 +23,8 @@
     <!-- BEGIN PAGE CONTENT-->
     <div class="row">
         <div class="col-md-12">
-            <m-portlet :title="'Select'" :color-type="5">
-                <m-datepicker :format="'yyyy-MM-dd'" :value.sync="dateValue"></m-datepicker>
+            <m-portlet :title="'Picker'" :color-type="5">
+                <m-datepicker :format="'yyyy-MM-dd'" :value.sync="dateValue" :clean-Button="true"></m-datepicker>
                 <div>{{dateValue}}</div>
             </m-portlet>
         </div>

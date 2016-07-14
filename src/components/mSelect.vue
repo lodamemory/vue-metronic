@@ -1,7 +1,8 @@
 <template>
+<div class="form-group">
     <label class="control-label">{{label}}</label>
     <div class="select2-container form-control select2me select2-allowclear"
-    :class="[selectClass, {'select2-container-active': open, 'select2-dropdown-open': open}]" v-el:container>
+    :class="[selectClass, {'select2-container-active': active, 'select2-dropdown-open': open}]" v-el:container>
         <a href="javascript:void(0)" class="select2-choice" @click="openSelect">
             <span class="select2-chosen">{{selectName}}</span>
             <abbr class="select2-search-choice-close" v-show="close" @click.stop="deleteValue"></abbr>
@@ -23,8 +24,10 @@
             </li>
         </ul>
     </div>
+</div>
 </template>
 <script>
+    import EventListener from './util/eventListener';
     export default {
         props: {
             'data': {
@@ -64,7 +67,12 @@
         },
         ready () {
             this.sData = this.data;
-            window.console.log(this.sData);
+            this._closeEvent = EventListener.listen(window, 'click', (e) => {
+                if (!this.$el.contains(e.target)) this.active = false;
+            });
+        },
+        beforeDestroy () {
+            this._closeEvent.remove();
         },
         methods: {
             openSelect () {
@@ -73,6 +81,7 @@
                     this.$els.mask.style.display = 'none';
                 } else {
                     this.open = true;
+                    this.active = true;
                     this.filterStr = '';
                     this.$els.drop.style.width = this.$els.container.offsetWidth + 'px';
                     this.$els.drop.style.top = this.$els.container.offsetTop + this.$els.container.offsetHeight + 'px';
