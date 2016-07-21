@@ -32,7 +32,6 @@
                 <div>{{sResult2.code}} {{sResult2.name}}</div>
                 <div>{{sResult3.code}} {{sResult3.name}}</div>
                 <div>{{sResult4.code}} {{sResult4.name}}</div>
-                <m-Tree></m-Tree>
             </m-portlet>
         </div>
         
@@ -43,9 +42,8 @@
     import mPortlet from '../components/mPortlet';
     import mButton from '../components/mButton';
     import mSelect from '../components/mSelect';
-    import mTree from '../components/mTree';
     export default {
-        components: { mPortlet, mSelect, mButton, mTree },
+        components: { mPortlet, mSelect, mButton },
         data () {
             return {
                 sData: [

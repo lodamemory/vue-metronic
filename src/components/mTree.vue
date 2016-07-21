@@ -1,7 +1,7 @@
 <template>
-  <div id="tree_1" class="tree-demo jstree jstree-1 jstree-default">
+  <!-- <div id="tree_1" class="tree-demo jstree jstree-1 jstree-default">
     <ul class="jstree-container-ul">
-      <li role="treeitem" class="jstree-node  jstree-open">
+      <li class="jstree-node  jstree-open">
         <i class="jstree-icon jstree-ocl"></i>
         <a class="jstree-anchor" href="#">
             <i class="jstree-icon jstree-themeicon fa fa-folder icon-state-warning icon-lg jstree-themeicon-custom"></i>
@@ -50,5 +50,26 @@
         class="jstree-icon jstree-themeicon fa fa-file icon-state-warning icon-lg jstree-themeicon-custom"></i>
         Clickanle link node </a></li>
     </ul>
-  </div>
+  </div> -->
+<div v-for="td in treeData">
+    {{td.code}}
+    <div v-if="td.nodes">
+        <item :tree-data="td.nodes"></item>
+    </div>
+</div>
+    
 </template>
+<script>
+    export default {
+        components: { item: function (resolve) {
+            window.console.log(resolve);
+            require(['./mTree.vue'], resolve);
+        } },
+        props: {
+            'treeData': {
+                type: Array,
+                default: []
+            }
+        }
+    };
+</script>

@@ -16,7 +16,8 @@
                           {name: 'Alert', url: 'alert', icon: ''},
                           {name: 'Modal', url: 'modal', icon: ''},
                           {name: 'Select', url: 'select', icon: ''},
-                          {name: 'Picker', url: 'picker', icon: ''}
+                          {name: 'Picker', url: 'picker', icon: ''},
+                          {name: 'Tree', url: 'tree', icon: ''}
                       ]
                     },
                     { name: 'Dashboard',

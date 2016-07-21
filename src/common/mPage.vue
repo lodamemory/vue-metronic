@@ -97,6 +97,7 @@
 </div>  
 </template>
 <script>
+    import EventListener from '../components/util/eventListener.js';
     export default{
         props: ['menus'],
         data () {
@@ -121,6 +122,10 @@
                         this.$route.router.go({name: m.url});
                     }
                 }
+            },
+            autoHegiht () {
+                let contentHeight = this.$els.footer.offsetTop - this.$els.header.offsetHeight;
+                this.$els.content.style.minHeight = contentHeight + 'px';
             }
         },
         transitions: {
@@ -130,8 +135,10 @@
             }
         },
         ready () {
-            let contentHeight = this.$els.footer.offsetTop - this.$els.header.offsetHeight;
-            this.$els.content.style.minHeight = contentHeight + 'px';
+            this.autoHegiht();
+            this._resizeEvent = EventListener.listen(window, 'resize', (e) => {
+                this.autoHegiht();
+            });
         }
     };
 </script>
