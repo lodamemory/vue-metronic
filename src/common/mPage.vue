@@ -111,7 +111,7 @@
         methods: {
             menuClick (i, m, sm) {
                 if (sm) {
-                    this.$route.router.go({name: sm.url});
+                    this.menuGo(sm.url);
                 } else {
                     if (this.subMenu === i) {
                         this.subMenu = -1;
@@ -119,8 +119,15 @@
                         this.subMenu = i;
                     }
                     if (m.subMenu.length === 0) {
-                        this.$route.router.go({name: m.url});
+                        this.menuGo(m.url);
                     }
+                }
+            },
+            menuGo (url) {
+                if (url.includes('http') || url.includes('https')) {
+                    window.location.href = url;
+                } else {
+                    this.$route.router.go({name: url});
                 }
             },
             autoHegiht () {

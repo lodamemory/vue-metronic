@@ -20,8 +20,8 @@
                           {name: 'Tree', url: 'tree', icon: ''}
                       ]
                     },
-                    { name: 'Dashboard',
-                      url: '',
+                    { name: 'github',
+                      url: 'https://github.com/lodamemory/vue-metronic',
                       icon: 'icon-home',
                       subMenu: []
                     }
