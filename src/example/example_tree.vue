@@ -24,9 +24,11 @@
     <div class="row">
         <div class="col-md-12">
             <m-portlet :title="'Tree'" :color-type="5">
-                <m-Tree :tree-data="treeData"></m-Tree>
-                <!-- <m-table></m-table>
-                <m-page></m-page> -->
+                <m-Tree :tree-data="treeData" :callback="treeTest" :checkbox="false"></m-Tree>
+                <m-Tree :tree-data="treeData2" :callback="treeTest" :checkbox="true" :result.sync="result"></m-Tree>
+                <div v-for="r in result">
+                    {{r.code}}
+                </div>
             </m-portlet>
         </div>
         
@@ -36,7 +38,7 @@
 <script>
     import mPortlet from '../components/mPortlet';
     import mButton from '../components/mButton';
-    import mTree from '../components/mTree';
+    import mTree from '../components/tree/mTree';
     import mPage from '../components/mPagination';
     import mTable from '../components/mTable';
     export default {
@@ -48,7 +50,12 @@
                     code: 'A',
                     name: 'A',
                     nodes: [
-                        {icon: '', code: 'A1', name: 'A1'},
+                        {icon: '', code: 'A1', name: 'A1',
+                            nodes: [
+                                {icon: '', code: 'AA1', name: 'AA1', checked: true},
+                                {icon: '', code: 'AA2', name: 'AA2'}
+                            ]
+                        },
                         {icon: '', code: 'A2', name: 'A2'}
                     ]
                 }, {
@@ -59,8 +66,36 @@
                         {icon: '', code: 'B1', name: 'B1'},
                         {icon: '', code: 'B2', name: 'B2'}
                     ]
-                }]
+                }],
+                treeData2: [{
+                    icon: '',
+                    code: 'A',
+                    name: 'A',
+                    nodes: [
+                        {icon: '', code: 'A1', name: 'A1',
+                            nodes: [
+                                {icon: '', code: 'AA1', name: 'AA1', checked: true},
+                                {icon: '', code: 'AA2', name: 'AA2'}
+                            ]
+                        },
+                        {icon: '', code: 'A2', name: 'A2'}
+                    ]
+                }, {
+                    icon: '',
+                    code: 'B',
+                    name: 'B',
+                    nodes: [
+                        {icon: '', code: 'B1', name: 'B1'},
+                        {icon: '', code: 'B2', name: 'B2'}
+                    ]
+                }],
+                result: []
             };
+        },
+        methods: {
+            treeTest (data) {
+                // window.console.log(data);
+            }
         }
     };
 </script>
