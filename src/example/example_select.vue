@@ -39,9 +39,9 @@
     <!-- END PAGE CONTENT-->
 </template>
 <script>
-    import mPortlet from '../components/mPortlet';
-    import mButton from '../components/mButton';
-    import mSelect from '../components/mSelect';
+    import mPortlet from '../components/portlet/mPortlet';
+    import mButton from '../components/button/mButton';
+    import mSelect from '../components/select/mSelect';
     export default {
         components: { mPortlet, mSelect, mButton },
         data () {

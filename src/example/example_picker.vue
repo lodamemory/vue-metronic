@@ -33,8 +33,8 @@
     <!-- END PAGE CONTENT-->
 </template>
 <script>
-    import mPortlet from '../components/mPortlet';
-    import mDatepicker from '../components/mDatepicker';
+    import mPortlet from '../components/portlet/mPortlet';
+    import mDatepicker from '../components/datepicker/mDatepicker';
     export default {
         components: { mPortlet, mDatepicker },
         data () {

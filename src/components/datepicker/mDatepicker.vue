@@ -86,7 +86,7 @@
 </template>
 
 <script>
-import EventListener from './util/eventListener.js';
+import EventListener from '../util/eventListener.js';
 export default {
     props: {
         value: {

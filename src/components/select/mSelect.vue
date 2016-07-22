@@ -27,7 +27,7 @@
 </div>
 </template>
 <script>
-    import EventListener from './util/eventListener';
+    import EventListener from '../util/eventListener';
     export default {
         props: {
             'data': {

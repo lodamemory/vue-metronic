@@ -40,9 +40,9 @@
     <!-- END PAGE CONTENT-->
 </template>
 <script>
-    import mPortlet from '../components/mPortlet';
-    import mModal from '../components/mModal';
-    import mButton from '../components/mButton';
+    import mPortlet from '../components/portlet/mPortlet';
+    import mModal from '../components/modal/mModal';
+    import mButton from '../components/button/mButton';
     export default {
         components: { mPortlet, mModal, mButton },
         data () {

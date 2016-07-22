@@ -56,9 +56,9 @@
     <!-- END PAGE CONTENT-->
 </template>
 <script>
-    import mPortlet from '../components/mPortlet';
-    import mAlert from '../components/mAlert';
-    import mButton from '../components/mButton';
+    import mPortlet from '../components/portlet/mPortlet';
+    import mAlert from '../components/alert/mAlert';
+    import mButton from '../components/button/mButton';
     export default {
         components: { mPortlet, mAlert, mButton },
         data () {

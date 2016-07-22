@@ -78,8 +78,8 @@
     <!-- END PAGE CONTENT-->
 </template>
 <script>
-    import mButton from '../components/mButton';
-    import mPortlet from '../components/mPortlet';
+    import mButton from '../components/button/mButton';
+    import mPortlet from '../components/portlet/mPortlet';
     export default {
         components: { mButton, mPortlet },
         methods: {
