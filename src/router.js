@@ -5,6 +5,7 @@ import ExampleModal from './example/example_modal';
 import ExampleSelect from './example/example_select';
 import ExamplePicker from './example/example_picker';
 import ExampleTree from './example/example_tree';
+import ExampleTable from './example/example_table';
 import Doc from './example/doc.vue';
 export default function (router) {
     router.map({
@@ -45,6 +46,10 @@ export default function (router) {
                 '/tree': {
                     name: 'tree',
                     component: ExampleTree
+                },
+                '/table': {
+                    name: 'table',
+                    component: ExampleTable
                 }
             }
         }

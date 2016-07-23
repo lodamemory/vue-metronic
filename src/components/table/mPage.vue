@@ -1,4 +1,4 @@
-<template>
+e<template>
   <div class="row">
     <div class="col-md-5 col-sm-12">
         <div class="dataTables_info" id="sample_1_info" role="status" aria-live="polite">Showing 1 to 5 of 25 entries
@@ -70,3 +70,6 @@
         }
     };
 </script>
+<style lang="css">
+    @import '../../assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css';
+</style>
