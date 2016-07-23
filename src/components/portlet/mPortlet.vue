@@ -1,5 +1,5 @@
 <template>
-    <div class="portlet box" :class="colorClass" v-show="pdelete">
+    <div class="portlet " :class="[{'box': type === 'box','light': type === 'light'},colorClass]" v-show="pdelete">
         <div class="portlet-title">
             <div class="caption">
                 <i class="fa fa-gift"></i>{{title}}
@@ -18,18 +18,29 @@
 </template>
 <script>
     export default {
-        props: [
-            'title', 'colorType'
-        ],
+        props: {
+            'title': {
+                type: String,
+                default: 'portlet'
+            },
+            'colorType': {
+                type: Number,
+                default: 1
+            },
+            'type': {
+                type: String,
+                default: 'box'
+            }
+        },
         data () {
             return {
                 colorClass: {
-                    'blue': this.colorType === 1,
-                    'green': this.colorType === 2,
-                    'red': this.colorType === 3,
-                    'yellow': this.colorType === 4,
-                    'purple': this.colorType === 5,
-                    'grey': this.colorType === 6
+                    'blue': this.type !== 'light' && this.colorType === 1,
+                    'green': this.type !== 'light' && this.colorType === 2,
+                    'red': this.type !== 'light' && this.colorType === 3,
+                    'yellow': this.type !== 'light' && this.colorType === 4,
+                    'purple': this.type !== 'light' && this.colorType === 5,
+                    'grey': this.type !== 'light' && this.colorType === 6
                 },
                 show: true,
                 pdelete: true

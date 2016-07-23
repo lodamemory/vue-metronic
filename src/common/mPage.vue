@@ -1,5 +1,5 @@
 <template>
-<div class="page-header-fixed page-quick-sidebar-over-content page-header-fixed-mobile page-footer-fixed">
+<div class="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo page-md" :class="{'page-sidebar-closed': toggler}">
     <div class="page-header navbar navbar-fixed-top" v-el:header>
         <!-- BEGIN HEADER INNER -->
         <div class="page-header-inner">
@@ -8,7 +8,7 @@
                 <a href="index.html">
                 <img src="../assets/logo.png" alt="logo" class="logo-default header-img-width">
                 </a>
-                <div class="menu-toggler sidebar-toggler hide">
+                <div class="menu-toggler sidebar-toggler"  @click="toggler = toggler === true ? false : true;">
                     <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
                 </div>
             </div>
@@ -17,11 +17,53 @@
             <a href="javascript:;" class="menu-toggler responsive-toggler" @click="toggler1 = toggler1 === true ? false : true;">
             </a>
             <!-- END RESPONSIVE MENU TOGGLER -->
+            <!-- BEGIN PAGE TOP -->
+            <div class="page-top">
+                <!-- BEGIN HEADER SEARCH BOX -->
+                <!-- DOC: Apply "search-form-expanded" right after the "search-form" class to have half expanded search box -->
+                <form class="search-form" action="page_general_search_2.html" method="GET">
+                    <div class="input-group">
+                        <input type="text" class="form-control input-sm" placeholder="Search..." name="query">
+                        <span class="input-group-btn">
+                            <a href="javascript:;" class="btn submit">
+                                <i class="icon-magnifier"></i>
+                            </a>
+                        </span>
+                    </div>
+                </form>
+                <!-- END HEADER SEARCH BOX -->
+                <!-- BEGIN TOP NAVIGATION MENU -->
+                <div class="top-menu">
+                    <ul class="nav navbar-nav pull-right">
+                        <li class="separator hide"> </li>
+                        
+                        <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                        <li class="dropdown dropdown-user dropdown-dark">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                <span class="username username-hide-on-mobile"> Nick </span>
+                                <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
+                                <img alt="" class="img-circle" src="../assets/layouts/layout4/img/avatar9.jpg" /> </a>
+                        </li>
+                        <!-- END USER LOGIN DROPDOWN -->
+                        <!-- BEGIN QUICK SIDEBAR TOGGLER -->
+                        <li class="dropdown dropdown-extended quick-sidebar-toggler">
+                            <span class="sr-only">Toggle Quick Sidebar</span>
+                            <i class="icon-logout"></i>
+                        </li>
+                        <!-- END QUICK SIDEBAR TOGGLER -->
+                    </ul>
+                </div>
+                <!-- END TOP NAVIGATION MENU -->
+            </div>
+            <!-- END PAGE TOP -->
         </div>
         <!-- END HEADER INNER -->
     </div>
+    <!-- BEGIN HEADER & CONTENT DIVIDER -->
+    <div class="clearfix"> </div>
+    <!-- END HEADER & CONTENT DIVIDER -->
     <!-- BEGIN CONTAINER -->
-    <div class="page-container" :class="{'page-sidebar-closed': toggler}">
+    <div class="page-container" >
         <!-- BEGIN SIDEBAR -->
         <div class="page-sidebar-wrapper">
             <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
@@ -30,31 +72,13 @@
                 <!-- BEGIN SIDEBAR MENU -->
                 <ul class="page-sidebar-menu" :class="{'page-sidebar-menu-closed': toggler}" >
                     <!-- DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element -->
-                    <li class="sidebar-toggler-wrapper">
+                    <li class="nav-item start active open">
                         <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
-                        <div class="sidebar-toggler" @click="toggler = toggler === true ? false : true;">
+                        <div class="sidebar-toggler" >
                         </div>
                         <!-- END SIDEBAR TOGGLER BUTTON -->
                     </li>
-                    <!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
-                    <li class="sidebar-search-wrapper">
-                        <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
-                        <!-- DOC: Apply "sidebar-search-bordered" class the below search form to have bordered search box -->
-                        <!-- DOC: Apply "sidebar-search-bordered sidebar-search-solid" class the below search form to have bordered & solid search box -->
-                        <form class="sidebar-search" action="extra_search.html" method="POST">
-                            <a href="javascript:;" class="remove">
-                            <i class="icon-close"></i>
-                            </a>
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-                                <a href="javascript:;" class="btn submit"><i class="icon-magnifier"></i></a>
-                                </span>
-                            </div>
-                        </form>
-                        <!-- END RESPONSIVE QUICK SEARCH FORM -->
-                    </li>
-                    <li class="start" v-for="(i, m) in menus" :class="{'active': i == subMenu}">
+                    <li class="nav-item" v-for="(i, m) in menus" :class="{'active': i == subMenu}">
                         <a href="javascript:;" @click="menuClick(i, m)">
                         <i class="{{m.icon}}"></i>
                         <span class="title">{{m.name}}</span>
@@ -84,13 +108,12 @@
     <!-- END CONTAINER --> 
     <!-- BEGIN FOOTER -->
     <div class="page-footer" v-el:footer>
-        <div class="page-footer-inner">
-             2014 &copy; Metronic by keenthemes.
+        <div class="page-footer-inner"> 2016 &copy; Metronic Theme By
+            <a target="_blank" href="http://keenthemes.com">Keenthemes</a> &nbsp;|&nbsp;
+            <a href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes" title="Purchase Metronic just for 27$ and get lifetime updates for free" target="_blank">Purchase Metronic!</a>
         </div>
-        <div class="page-footer-tools">
-            <span class="go-top">
-            <i class="fa fa-angle-up"></i>
-            </span>
+        <div class="scroll-to-top">
+            <i class="icon-arrow-up"></i>
         </div>
     </div>
     <!-- END FOOTER --> 

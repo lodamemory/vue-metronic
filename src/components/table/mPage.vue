@@ -70,6 +70,3 @@ e<template>
         }
     };
 </script>
-<style lang="css">
-    @import '../../assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css';
-</style>

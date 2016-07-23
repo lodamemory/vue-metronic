@@ -1,26 +1,5 @@
 <template>
-    <!-- BEGIN PAGE HEADER-->
-    <h3 class="page-title">
-    Example Button Page <small>example Button page</small>
-    </h3>
-    <div class="page-bar">
-        <ul class="page-breadcrumb">
-            <li>
-                <i class="fa fa-home"></i>
-                <a href="index.html">Home</a>
-                <i class="fa fa-angle-right"></i>
-            </li>
-            <li>
-                <a href="#">UI</a>
-                <i class="fa fa-angle-right"></i>
-            </li>
-            <li>
-                <a href="#">Example Button Page</a>
-            </li>
-        </ul>
-    </div>
-    <!-- END PAGE HEADER-->
-    <!-- BEGIN PAGE CONTENT-->
+    <m-page-header :title="'Example Button Page'" :small-title="'Example Button Page'"></m-page-header>
     <div class="row">
         <div class="col-md-12">
             <m-portlet :title="'Button'" :color-type="5">
@@ -75,13 +54,13 @@
             </m-portlet>
         </div>
     </div>
-    <!-- END PAGE CONTENT-->
 </template>
 <script>
+    import mPageHeader from '../common/mPageHeader';
     import mButton from '../components/button/mButton';
     import mPortlet from '../components/portlet/mPortlet';
     export default {
-        components: { mButton, mPortlet },
+        components: { mPageHeader, mButton, mPortlet },
         methods: {
             test () {
                 window.console.log('success');
