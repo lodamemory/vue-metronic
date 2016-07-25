@@ -25,6 +25,7 @@ import './assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstra
 // BEGIN THEME GLOBAL STYLES
 import './assets/global/css/components-md.min.css';
 import './assets/global/css/plugins-md.min.css';
+import './assets/global/css/font.css';
 // END THEME GLOBAL STYLES
 
 // BEGIN THEME LAYOUT STYLES

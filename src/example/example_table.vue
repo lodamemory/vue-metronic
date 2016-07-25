@@ -3,8 +3,9 @@
     <div class="row">
         <div class="col-md-12">
             <m-portlet :title="'NomalTable'" :color-type="5">
-                <m-table :colums="colums" :table-data="tableData" :check-colum="true"></m-table>
+                <m-table :colums="colums" :table-data="tableData" :check-colum="true" :check-result="checkResult"></m-table>
                 <m-page :total-count="totalCount" :now-page.sync="nowPage"></m-page>
+                {{checkResult}}
             </m-portlet>
         </div>
     </div>
@@ -20,22 +21,28 @@
         data () {
             return {
                 colums: [
-                    { data: 'a1', title: 'A1', template: '<button class="btn btn-primary" v-text="td.a1"></button>' },
+                    { data: 'a1', title: 'A1', template: [ { 'btnClass': 'red btn-outline', 'label': '修改', 'callback': this.edit }, { 'btnClass': 'red', 'label': '修改', 'callback': this.edit } ] },
                     { data: 'a2', title: 'A2' },
                     { data: 'a3', title: 'A3' },
                     { data: 'a4', title: 'A4' },
-                    { data: 'a5', title: 'A5' }
+                    { data: 'a5', title: 'A5', template: [ { 'btnClass': 'red btn-outline', 'label': '修改', 'callback': this.edit }, { 'btnClass': 'red', 'label': '修改', 'callback': this.edit } ] }
                 ],
                 tableData: [
-                    { a1: '1', a2: '2', a3: '3', a4: '4', a5: '5' },
-                    { a1: '1', a2: '2', a3: '3', a4: '4', a5: '5' },
-                    { a1: '1', a2: '2', a3: '3', a4: '4', a5: '5' },
-                    { a1: '1', a2: '2', a3: '3', a4: '4', a5: '5' },
-                    { a1: '1', a2: '2', a3: '3', a4: '4', a5: '5' }
+                    { a1: '11', a2: '2', a3: '3', a4: '4', a5: '5' },
+                    { a1: '111', a2: '2', a3: '3', a4: '4', a5: '5' },
+                    { a1: '1111', a2: '2', a3: '3', a4: '4', a5: '5' },
+                    { a1: '11111', a2: '2', a3: '3', a4: '4', a5: '5' },
+                    { a1: '111111', a2: '2', a3: '3', a4: '4', a5: '5' }
                 ],
                 nowPage: 1,
-                totalCount: 20
+                totalCount: 20,
+                checkResult: []
             };
+        },
+        methods: {
+            edit (data) {
+                window.console.log(data);
+            }
         },
         watch: {
             'nowPage': function (now, old) {

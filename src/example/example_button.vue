@@ -2,62 +2,62 @@
     <m-page-header :title="'Example Button Page'" :small-title="'Example Button Page'"></m-page-header>
     <div class="row">
         <div class="col-md-12">
-            <m-portlet :title="'Button'" :color-type="5">
+            <m-portlet :title="'Button'" :color-type="4">
                 <div class="clearfix">
                     <h4>btn color</h4>
-                    <m-button :color-type="'primary'" @click="test">primary</m-button>
-                    <m-button :color-type="'success'" @click="test">success</m-button>
-                    <m-button :color-type="'info'" @click="test">info</m-button>
-                    <m-button :color-type="'warning'" @click="test">warning</m-button>
-                    <m-button :color-type="'danger'" @click="test">danger</m-button>
-                    <m-button :color-type="'link'" @click="test">link</m-button>
+                    <m-button :btn-class="'btn-primary'" @click="test">primary</m-button>
+                    <m-button :btn-class="'btn-success'" @click="test">success</m-button>
+                    <m-button :btn-class="'btn-info'" @click="test">info</m-button>
+                    <m-button :btn-class="'btn-warning'" @click="test">warning</m-button>
+                    <m-button :btn-class="'btn-danger'" @click="test">danger</m-button>
+                    <m-button :btn-class="'btn-link'" @click="test">link</m-button>
                 </div>
                 <div class="clearfix">
                     <h4>btn color circle</h4>
-                    <m-button :is-circle="true" :color-type="'primary'" @click="test">primary</m-button>
-                    <m-button :is-circle="true" :color-type="'success'" @click="test">success</m-button>
-                    <m-button :is-circle="true" :color-type="'info'" @click="test">info</m-button>
-                    <m-button :is-circle="true" :color-type="'warning'" @click="test">warning</m-button>
-                    <m-button :is-circle="true" :color-type="'danger'" @click="test">danger</m-button>
-                    <m-button :is-circle="true" :color-type="'link'" @click="test">link</m-button>
+                    <m-button :is-circle="true" :btn-class="'btn-primary'" @click="test">primary</m-button>
+                    <m-button :is-circle="true" :btn-class="'btn-success'" @click="test">success</m-button>
+                    <m-button :is-circle="true" :btn-class="'btn-info'" @click="test">info</m-button>
+                    <m-button :is-circle="true" :btn-class="'btn-warning'" @click="test">warning</m-button>
+                    <m-button :is-circle="true" :btn-class="'btn-danger'" @click="test">danger</m-button>
+                    <m-button :is-circle="true" :btn-class="'btn-link'" @click="test">link</m-button>
                 </div>
                 <div class="clearfix">
                     <h4>btn size</h4>
-                    <m-button :color-type="'primary'" :size="'lg'" @click="test">primary</m-button>
-                    <m-button :color-type="'success'" :size="'sm'" @click="test">success</m-button>
-                    <m-button :color-type="'info'" :size="'xs'" @click="test">info</m-button>
+                    <m-button :btn-class="'btn-primary'" :size="'lg'" @click="test">primary</m-button>
+                    <m-button :btn-class="'btn-success'" :size="'sm'" @click="test">success</m-button>
+                    <m-button :btn-class="'btn-info'" :size="'xs'" @click="test">info</m-button>
                 </div>
                 <div class="clearfix">
                     <h4>btn size circle</h4>
-                    <m-button :is-circle="true" :color-type="'primary'" :size="'lg'" @click="test">primary</m-button>
-                    <m-button :is-circle="true" :color-type="'success'" :size="'sm'" @click="test">success</m-button>
-                    <m-button :is-circle="true" :color-type="'info'" :size="'xs'" @click="test">info</m-button>
+                    <m-button :is-circle="true" :btn-class="'btn-primary'" :size="'lg'" @click="test">primary</m-button>
+                    <m-button :is-circle="true" :btn-class="'btn-success'" :size="'sm'" @click="test">success</m-button>
+                    <m-button :is-circle="true" :btn-class="'btn-info'" :size="'xs'" @click="test">info</m-button>
                 </div>
                 <div class="clearfix">
                     <h4>btn disabled</h4>
-                    <m-button :color-type="'primary'" @click="test" disabled>primary</m-button>
-                    <m-button :color-type="'success'" @click="test" disabled>success</m-button>
-                    <m-button :color-type="'info'" @click="test" disabled>info</m-button>
-                    <m-button :color-type="'warning'" @click="test" disabled>warning</m-button>
-                    <m-button :color-type="'danger'" @click="test" disabled>danger</m-button>
-                    <m-button :color-type="'link'" @click="test" disabled>link</m-button>
+                    <m-button :btn-class="'btn-primary'" @click="test" disabled>primary</m-button>
+                    <m-button :btn-class="'btn-success'" @click="test" disabled>success</m-button>
+                    <m-button :btn-class="'btn-info'" @click="test" disabled>info</m-button>
+                    <m-button :btn-class="'btn-warning'" @click="test" disabled>warning</m-button>
+                    <m-button :btn-class="'btn-danger'" @click="test" disabled>danger</m-button>
+                    <m-button :btn-class="'btn-link'" @click="test" disabled>link</m-button>
                 </div>
                 <div class="clearfix">
                     <h4>btn disabled circle</h4>
-                    <m-button :is-circle="true" :color-type="'primary'" @click="test" disabled>primary</m-button>
-                    <m-button :is-circle="true" :color-type="'success'" @click="test" disabled>success</m-button>
-                    <m-button :is-circle="true" :color-type="'info'" @click="test" disabled>info</m-button>
-                    <m-button :is-circle="true" :color-type="'warning'" @click="test" disabled>warning</m-button>
-                    <m-button :is-circle="true" :color-type="'danger'" @click="test" disabled>danger</m-button>
-                    <m-button :is-circle="true" :color-type="'link'" @click="test" disabled>link</m-button>
+                    <m-button :is-circle="true" :btn-class="'btn-primary'" @click="test" disabled>primary</m-button>
+                    <m-button :is-circle="true" :btn-class="'btn-success'" @click="test" disabled>success</m-button>
+                    <m-button :is-circle="true" :btn-class="'btn-info'" @click="test" disabled>info</m-button>
+                    <m-button :is-circle="true" :btn-class="'btn-warning'" @click="test" disabled>warning</m-button>
+                    <m-button :is-circle="true" :btn-class="'btn-danger'" @click="test" disabled>danger</m-button>
+                    <m-button :is-circle="true" :btn-class="'btn-link'" @click="test" disabled>link</m-button>
                 </div>
             </m-portlet>
             <m-portlet :title="'IconButton'" :color-type="4">
                 <div class="clearfix">
                     <h4>btn icon</h4>
-                    <m-button :color-type="'primary'" :icon="'icon-user'" @click="test">用户</m-button>
-                    <m-button :color-type="'success'" :icon="'glyphicon glyphicon-remove'" @click="test">删除</m-button>
-                    <m-button :color-type="'info'" :icon="'glyphicon glyphicon-plus'" @click="test">增加</m-button>
+                    <m-button :btn-class="'btn-primary'" :icon="'icon-user'" @click="test">用户</m-button>
+                    <m-button :btn-class="'btn-success'" :icon="'glyphicon glyphicon-remove'" @click="test">删除</m-button>
+                    <m-button :btn-class="'btn-info'" :icon="'glyphicon glyphicon-plus'" @click="test">增加</m-button>
                 </div>
             </m-portlet>
         </div>
@@ -71,7 +71,7 @@
         components: { mPageHeader, mButton, mPortlet },
         methods: {
             test () {
-                window.console.log('success');
+                window.console.log('btn-success');
             }
         }
     };

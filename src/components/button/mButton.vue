@@ -1,5 +1,5 @@
 <template>
-    <button type="button" class="btn" :class="btnClass"><i v-if="icon !== ''" :class="[icon]"></i><slot>button</slot></button>
+    <button type="button" class="btn" :class="[btnClass, sizeClass]"><i v-if="icon !== ''" :class="[icon]"></i><slot>button</slot></button>
 </template>
 <script>
     export default {
@@ -8,7 +8,7 @@
                 default: false,
                 type: Boolean
             },
-            'colorType': {
+            'btnClass': {
                 default: 'primary',
                 type: String
             },
@@ -22,14 +22,7 @@
         },
         data () {
             return {
-                btnClass: {
-                    'btn-circle': this.isCircle,
-                    'btn-primary': this.colorType === 'primary',
-                    'btn-success': this.colorType === 'success',
-                    'btn-info': this.colorType === 'info',
-                    'btn-warning': this.colorType === 'warning',
-                    'btn-danger': this.colorType === 'danger',
-                    'btn-link': this.colorType === 'link',
+                sizeClass: {
                     'btn-lg': this.size === 'lg',
                     'btn-sm': this.size === 'sm',
                     'btn-xs': this.size === 'xs'

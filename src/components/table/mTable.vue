@@ -16,12 +16,15 @@
                 <tr class="odd gradeX" v-for="td in tableData">
                     <td v-if="checkColum">
                         <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
-                            <input type="checkbox" class="checkboxes" :checked="td.checked" />
+                            <input type="checkbox" class="checkboxes" :checked="td.checked" @click="checkOne(td)"/>
                             <span></span>
                         </label>
                     </td>
                     <td v-for="c in colums">
-                        {{td[c.data]}}
+                        <span v-if="c.template">
+                        <m-button v-for="t in c.template" :btn-class="t.btnClass" :size="'xs'" @click="t.callback(td)">{{t.label}}</m-button>
+                        </span>
+                        <span v-else>{{td[c.data]}}</span>
                     </td>
                 </tr>
             </tbody>
@@ -30,7 +33,9 @@
 </template>
 <script>
     import Vue from 'vue';
+    import mButton from '../button/mButton';
     export default {
+        components: { mButton },
         props: {
             'colums': {
                 type: Array,
@@ -42,6 +47,12 @@
             'checkColum': {
                 type: Boolean,
                 default: true
+            },
+            'checkResult': {
+                type: Array,
+                default () {
+                    return [];
+                }
             }
         },
         data () {
@@ -61,6 +72,21 @@
                 this.allCheck = !this.allCheck;
                 for (var td of this.tableData) {
                     td.checked = this.allCheck;
+                    if (this.allCheck) this.checkResult.push(td);
+                    if (!this.allCheck) this.checkResult = [];
+                }
+            },
+            checkOne (data) {
+                if (data.checked) {
+                    this.checkResult.push(data);
+                } else {
+                    var temp = [];
+                    for (var r of this.checkResult) {
+                        if (r !== data) {
+                            temp.push(r);
+                        }
+                    }
+                    this.checkResult = temp;
                 }
             }
         }
