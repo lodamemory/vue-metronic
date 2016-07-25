@@ -1,6 +1,20 @@
 <template>
-    <div id="toast-container" class="animated" :class="toastClass" v-show="show" :transition="effect">
-    	<div class="toast" :class="colorClass">
+    <div id="toast-container" class="animated" :class="{
+                    'toast-top-right': position === 'topRight',
+                    'toast-top-left': position === 'topLeft',
+                    'toast-top-center': position === 'topCenter',
+                    'toast-top-full-width': position === 'topFullWidth',
+                    'toast-bottom-right': position === 'bottomRight',
+                    'toast-bottom-left': position === 'bottomLeft',
+                    'toast-bottom-center': position === 'bottomCenter',
+                    'toast-bottom-full-width': position === 'bottomFullWidth'
+                }" v-show="show" :transition="effect">
+    	<div class="toast" :class="{
+                    'toast-success': colorType === 'success',
+                    'toast-info': colorType === 'info',
+                    'toast-warning': colorType === 'warning',
+                    'toast-error': colorType === 'error'
+                }">
     		<button class="toast-close-button" @click="close">×</button>
     		<div class="toast-title">{{title}}</div>
     		<div class="toast-message">{{message}}</div>
@@ -44,33 +58,13 @@
         watch: {
             'show': function (v, o) {
                 let self = this;
-                window.console.log(this.colorType);
+                window.console.log(this.toastClass);
                 if (v) {
                     setTimeout(function () {
                         self.show = false;
                     }, 2000);
                 }
             }
-        },
-        data () {
-            return {
-                toastClass: {
-                    'toast-top-right': this.position === 'topRight',
-                    'toast-top-left': this.position === 'topLeft',
-                    'toast-top-center': this.position === 'topCenter',
-                    'toast-top-full-width': this.position === 'topFullWidth',
-                    'toast-bottom-right': this.position === 'bottomRight',
-                    'toast-bottom-left': this.position === 'bottomLeft',
-                    'toast-bottom-center': this.position === 'bottomCenter',
-                    'toast-bottom-full-width': this.position === 'bottomFullWidth'
-                },
-                colorClass: {
-                    'toast-success': this.colorType === 'success',
-                    'toast-info': this.colorType === 'info',
-                    'toast-warning': this.colorType === 'warning',
-                    'toast-error': this.colorType === 'error'
-                }
-            };
         },
         transitions: {
             'fade': {

@@ -9,7 +9,7 @@
                             <span></span>
                         </label>
                     </th>
-                    <th v-for="c in colums">{{c.title}}</th>
+                    <th v-for="c in colums" :style="{ width: c.width + 'px' }">{{c.title}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -46,7 +46,7 @@
             },
             'checkColum': {
                 type: Boolean,
-                default: true
+                default: false
             },
             'checkResult': {
                 type: Array,
@@ -59,6 +59,16 @@
             return {
                 'allCheck': false
             };
+        },
+        watch: {
+            'tableData': function (val, old) {
+                for (var td of val) {
+                    if (typeof td.checked === 'undefined') {
+                        Vue.set(td, 'checked', false);
+                    }
+                }
+                this.allCheck = false;
+            }
         },
         created () {
             for (var td of this.tableData) {
@@ -73,10 +83,12 @@
                 for (var td of this.tableData) {
                     td.checked = this.allCheck;
                     if (this.allCheck) this.checkResult.push(td);
-                    if (!this.allCheck) this.checkResult = [];
                 }
+                if (!this.allCheck) this.checkResult = [];
             },
             checkOne (data) {
+                window.console.log(data.checked);
+                data.checked = !data.checked;
                 if (data.checked) {
                     this.checkResult.push(data);
                 } else {

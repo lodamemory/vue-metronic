@@ -1,5 +1,5 @@
 <template>
-    <button type="button" class="btn" :class="[btnClass, sizeClass]"><i v-if="icon !== ''" :class="[icon]"></i><slot>button</slot></button>
+    <button type="button" class="btn" :class="[btnClass, sizeClass, {'btn-circle': isCircle}]"><i v-if="icon !== ''" :class="[icon]"></i><slot>button</slot></button>
 </template>
 <script>
     export default {
@@ -9,7 +9,7 @@
                 type: Boolean
             },
             'btnClass': {
-                default: 'primary',
+                default: 'btn-primary',
                 type: String
             },
             'size': {

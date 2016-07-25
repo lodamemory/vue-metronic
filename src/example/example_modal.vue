@@ -4,15 +4,15 @@
         <div class="col-md-12">
             <m-portlet :title="'Modal'" :color-type="5">
                 <m-modal :show.sync="basic" :callback="modalTest">basic modal</m-modal>
-                <m-button :color-type="'primary'" @click="basicOpen">basic modal open</m-button>
+                <m-button :btn-class="'blue-hoki btn-outline'" @click="basicOpen">basic modal open</m-button>
                 <m-modal :show.sync="basicZoom" :effect="'zoom'" :callback="modalTest">basic modal</m-modal>
-                <m-button :color-type="'primary'" @click="basicZoomOpen">basic modal zoom open</m-button>
+                <m-button :btn-class="'blue-hoki btn-outline'" @click="basicZoomOpen">basic modal zoom open</m-button>
                 <m-modal :show.sync="full" :effect="'zoom'" :modal-size="'full'" :callback="modalTest">full modal</m-modal>
-                <m-button :color-type="'primary'" @click="fullOpen">full modal open</m-button>
+                <m-button :btn-class="'blue-hoki btn-outline'" @click="fullOpen">full modal open</m-button>
                 <m-modal :show.sync="lg" :effect="'zoom'" :modal-size="'lg'" :callback="modalTest">large modal</m-modal>
-                <m-button :color-type="'primary'" @click="lgOpen">large modal open</m-button>
+                <m-button :btn-class="'blue-hoki btn-outline'" @click="lgOpen">large modal open</m-button>
                 <m-modal :show.sync="sm" :effect="'zoom'" :modal-size="'sm'" :callback="modalTest">small modal</m-modal>
-                <m-button :color-type="'primary'" @click="smOpen">small modal open</m-button>
+                <m-button :btn-class="'blue-hoki btn-outline'" @click="smOpen">small modal open</m-button>
             </m-portlet>
         </div>
     </div>
