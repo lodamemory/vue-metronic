@@ -10,8 +10,8 @@
                      <slot>Modal body goes here</slot>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn default" @click="close">{{closeText}}</button>
-                    <button type="button" class="btn blue" @click="callback">{{saveText}}</button>
+                    <button type="button" class="btn dark btn-outline" @click="close">{{closeText}}</button>
+                    <button type="button" class="btn green" @click="callback">{{saveText}}</button>
                 </div>
             </div>
             <!-- /.modal-content -->

@@ -1,30 +1,27 @@
 <template>
-<div class="form-group">
-    <label class="control-label">{{label}}</label>
-    <div class="select2-container form-control select2me select2-allowclear"
-    :class="[selectClass, {'select2-container-active': active, 'select2-dropdown-open': open}]" v-el:container>
-        <a href="javascript:void(0)" class="select2-choice" @click="openSelect">
-            <span class="select2-chosen">{{selectName}}</span>
-            <abbr class="select2-search-choice-close" v-show="close" @click.stop="deleteValue"></abbr>
-            <span class="select2-arrow">
-                <b role="presentation"></b>
-            </span>
-        </a>
-    </div>
-    <div id="select2-drop-mask" class="select2-drop-mask" style="display:none" @click="openSelect" v-el:mask></div>
-    <div class="select2-drop select2-display-none select2-with-searchbox select2-drop-active s-show" v-show="open" v-el:drop>
-        <div class="select2-search"><label class="select2-offscreen"></label>
-            <input type="text" class="select2-input" placeholder="" v-model="filterStr">
-        </div>
-        <ul class="select2-results" role="listbox" v-el:ul>
-            <li class="select2-results-dept-0 select2-result select2-result-selectable" v-for="d in data" @mouseover="mouseover($event)" @mouseout="mouseout($event)" >
-            <div class="select2-result-label" @click="valueSelect(d)">
-                <span class="select2-match"></span>{{d.name}}
-            </div>
+<span class="select2 select2-container select2-container--bootstrap select2-container--below " :class="[selectClass, {'select2-container--focus': active, 'select2-container--open': open}]" v-el:container>
+    <span class="selection">
+        <span class="select2-selection select2-selection--single" @click="openSelect">
+            <span class="select2-selection__rendered" title="{{selectName}}">{{selectName}}</span>
+            <span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span>
+        </span>
+    </span>
+    <span class="dropdown-wrapper"></span>
+</span>
+<span class="select2-container select2-container--bootstrap select2-container--open s-show" v-show="open" v-el:drop>
+    <span class="select2-dropdown select2-dropdown--below">
+        <span class="select2-search select2-search--dropdown">
+            <input class="select2-search__field" type="search" v-model="filterStr">
+        </span>
+        <span class="select2-results">
+        <ul class="select2-results__options" v-el:ul>
+            <li class="select2-results__option" aria-selected="false" v-for="d in data" @mouseover="mouseover($event)" @mouseout="mouseout($event)" @click="valueSelect(d)">
+                {{d.name}}
             </li>
         </ul>
-    </div>
-</div>
+        </span>
+    </span>
+</span>
 </template>
 <script>
     import EventListener from '../util/eventListener';
@@ -41,10 +38,6 @@
             'size': {
                 type: String,
                 default: 'medium'
-            },
-            'label': {
-                type: String,
-                default: ''
             }
         },
         data () {
@@ -78,18 +71,15 @@
             openSelect () {
                 if (this.open) {
                     this.open = false;
-                    this.$els.mask.style.display = 'none';
+                    this.$els.ul.children[this.currentLi].attributes[1].value = false;
                 } else {
                     this.open = true;
                     this.active = true;
                     this.filterStr = '';
                     this.$els.drop.style.width = this.$els.container.offsetWidth + 'px';
-                    this.$els.drop.style.top = this.$els.container.offsetTop + this.$els.container.offsetHeight + 'px';
-                    this.$els.drop.style.left = this.$els.container.offsetLeft + 'px';
-                    this.$els.mask.style.display = 'block';
                     for (var index in this.data) {
                         if (this.data[index] === this.result) {
-                            this.$els.ul.children[index].classList.add('select2-highlighted');
+                            this.$els.ul.children[index].attributes[1].value = true;
                             this.currentLi = index;
                             break;
                         }
@@ -100,8 +90,8 @@
                 this.result = data;
                 this.selectName = data.name;
                 this.close = true;
+                if (this.currentLi !== '') this.$els.ul.children[this.currentLi].attributes[1].value = false;
                 this.open = false;
-                this.$els.mask.style.display = 'none';
             },
             deleteValue () {
                 this.close = false;
@@ -109,11 +99,10 @@
                 this.selectName = '';
             },
             mouseover (event) {
-                if (this.currentLi !== '') this.$els.ul.children[this.currentLi].classList.remove('select2-highlighted');
-                event.currentTarget.classList.add('select2-highlighted');
+                event.currentTarget.classList.add('select2-results__option--highlighted');
             },
             mouseout (event) {
-                event.currentTarget.classList.remove('select2-highlighted');
+                event.currentTarget.classList.remove('select2-results__option--highlighted');
             }
         },
         watch: {

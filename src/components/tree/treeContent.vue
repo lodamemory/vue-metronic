@@ -1,5 +1,5 @@
 <template>
-    <ul :class="{'jstree-container-ul':type === 'root', 'jstree-children':type === 'child', 'jstree-no-dots jstree-wholerow-ul':checkbox}">
+    <ul :class="{'jstree-container-ul':type === 'root', 'jstree-children':type === 'child'}">
         <li class="jstree-node" :class="{'jstree-leaf':td.nodes? false: true,'jstree-open':td.nodes? true: false, 'jstree-last':treeData.length === $index + 1}" v-for="td in treeData" >
             <i class="jstree-icon jstree-ocl" @click.stop="treeToggle($event)"></i>
               <a class="jstree-anchor" :class="{'jstree-clicked': (!checkbox  && currentActive + $index === currentclick) || (checkbox && td.checked)}" href="javascript:;" @click="treeClick(td, $index, $event)" @mouseout="mouseout($event)" @mouseover="mouseover($event)">

@@ -11,7 +11,7 @@
                 </a>
             </div>
         </div>
-        <div class="portlet-body animated" v-show="show" transition="fade">
+        <div class="portlet-body" v-show="show">
             <slot></slot>
         </div>
     </div>
@@ -45,12 +45,6 @@
                 show: true,
                 pdelete: true
             };
-        },
-        transitions: {
-            'fade': {
-                enterClass: 'fadeIn',
-                leaveClass: 'fadeOut'
-            }
         }
     };
 </script>

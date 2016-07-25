@@ -1,5 +1,5 @@
 <template>
-    <button type="button" class="btn" :class="btnClass"><slot>button</slot></button>
+    <button type="button" class="btn" :class="btnClass"><i v-if="icon !== ''" :class="[icon]"></i><slot>button</slot></button>
 </template>
 <script>
     export default {
@@ -14,6 +14,10 @@
             },
             'size': {
                 type: String
+            },
+            'icon': {
+                type: String,
+                default: ''
             }
         },
         data () {

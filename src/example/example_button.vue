@@ -52,6 +52,14 @@
                     <m-button :is-circle="true" :color-type="'link'" @click="test" disabled>link</m-button>
                 </div>
             </m-portlet>
+            <m-portlet :title="'IconButton'" :color-type="4">
+                <div class="clearfix">
+                    <h4>btn icon</h4>
+                    <m-button :color-type="'primary'" :icon="'icon-user'" @click="test">用户</m-button>
+                    <m-button :color-type="'success'" :icon="'glyphicon glyphicon-remove'" @click="test">删除</m-button>
+                    <m-button :color-type="'info'" :icon="'glyphicon glyphicon-plus'" @click="test">增加</m-button>
+                </div>
+            </m-portlet>
         </div>
     </div>
 </template>
