@@ -1,7 +1,7 @@
 <template>
 <span class="select2 select2-container select2-container--bootstrap select2-container--below " :class="[selectClass, {'select2-container--focus': active, 'select2-container--open': open}]" v-el:container>
     <span class="selection">
-        <span class="select2-selection select2-selection--single" @click="openSelect">
+        <span class="select2-selection select2-selection--single" @click.stop="openSelect">
             <span class="select2-selection__rendered" title="{{selectName}}">{{selectName}}</span>
             <span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span>
         </span>
@@ -15,7 +15,7 @@
         </span>
         <span class="select2-results">
         <ul class="select2-results__options" v-el:ul>
-            <li class="select2-results__option" aria-selected="false" v-for="d in data" @mouseover="mouseover($event)" @mouseout="mouseout($event)" @click="valueSelect(d)">
+            <li class="select2-results__option" aria-selected="false" v-for="d in data" @mouseover="mouseover($event)" @mouseout="mouseout($event)" @click.stop="valueSelect(d)">
                 {{d.name}}
             </li>
         </ul>
@@ -61,7 +61,10 @@
         ready () {
             this.sData = this.data;
             this._closeEvent = EventListener.listen(window, 'click', (e) => {
-                if (!this.$el.contains(e.target)) this.active = false;
+                if (!this.$el.contains(e.target)) {
+                    this.open = false;
+                    this.active = false;
+                }
             });
         },
         beforeDestroy () {
