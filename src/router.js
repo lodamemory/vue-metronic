@@ -1,6 +1,7 @@
 import App from './App';
 import ExampleButton from './example/example_button';
 import ExampleAlert from './example/example_alert';
+import ExamplePortlet from './example/example_portlet';
 import ExampleModal from './example/example_modal';
 import ExampleSelect from './example/example_select';
 import ExamplePicker from './example/example_picker';
@@ -26,6 +27,10 @@ export default function (router) {
                 '/buttons': {
                     name: 'buttons',
                     component: ExampleButton
+                },
+                '/portlet': {
+                    name: 'portlet',
+                    component: ExamplePortlet
                 },
                 '/alert': {
                     name: 'alert',
