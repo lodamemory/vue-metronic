@@ -1,29 +1,46 @@
-e<template>
-  <div class="row">
-    <div class="col-md-5 col-sm-12">
-        <div class="dataTables_info" id="sample_1_info" role="status" aria-live="polite">Showing 1 to 5 of 25 entries
+<template>
+<div class="row dataTables_wrapper">
+    <div class="col-md-5 col-sm-5">
+        <div class="dataTables_info" id="sample_1_info" role="status" aria-live="polite">
+            当前 {{nowPage}} / {{totalPage}} 页 共 {{totalCount}} 条
         </div>
     </div>
-    <div class="col-md-7 col-sm-12">
-      <div class="dataTables_paginate paging_bootstrap_full_number" id="sample_1_paginate">
-        <ul class="pagination" style="visibility: visible;">
-            <li class="prev disabled"><a href="#" title="First"><i class="fa fa-angle-double-left"></i></a></li>
-            <li class="prev disabled"><a href="#" title="Prev"><i class="fa fa-angle-left"></i></a></li>
-            <li class="active"><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li class="next"><a href="#" title="Next"><i class="fa fa-angle-right"></i></a></li>
-            <li class="next"><a href="#" title="Last"><i class="fa fa-angle-double-right"></i></a></li>
-        </ul>
-      </div>
+    <div class="col-md-7 col-sm-7">
+        <div class="dataTables_paginate paging_bootstrap_full_number" id="sample_1_paginate">
+            <ul class="pagination" style="visibility: visible;">
+                <li class="prev" :class="{'disabled':nowPage === 1}">
+                    <a href="javascript:;" title="First" @click="_first"><i class="fa fa-angle-double-left"></i></a>
+                </li>
+                <li class="prev" :class="{'disabled':nowPage === 1}">
+                    <a href="javascript:;" title="Prev" @click="_pre"><i class="fa fa-angle-left"></i></a>
+                </li>
+                <li class="next" :class="{'disabled':nowPage === totalPage || totalCount === 0}">
+                    <a href="javascript:;" title="Next" @click="_next"><i class="fa fa-angle-right"></i></a>
+                </li>
+                <li class="next" :class="{'disabled':nowPage === totalPage || totalCount === 0}">
+                    <a href="javascript:;" title="Last" @click="_last"><i class="fa fa-angle-double-right"></i></a>
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
+</div>
 </template>
 <script>
     export default {
-        props: ['totalCount', 'limit', 'nowPage'],
+        props: {
+            'totalCount': {
+                type: Number,
+                default: 0
+            },
+            'limit': {
+                type: Number,
+                default: 5
+            },
+            'nowPage': {
+                type: Number,
+                default: 1
+            }
+        },
         data () {
             return {
                 total: 0,
@@ -36,6 +53,9 @@ e<template>
             'totalCount': function (val, oldVal) {
                 this.totalPage = Math.ceil(val / this.limit);
             }
+        },
+        created () {
+            this.totalPage = Math.ceil(this.totalCount / this.limit);
         },
         methods: {
             _next () {
@@ -70,6 +90,3 @@ e<template>
         }
     };
 </script>
-<style lang="css">
-    @import '../../assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css';
-</style>

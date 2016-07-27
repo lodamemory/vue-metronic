@@ -1,51 +1,106 @@
 <template>
     <div class="table-scrollable">
-        <table class="table table-striped table-bordered table-hover dataTable no-footer" >
+        <table class="table table-striped table-bordered table-hover table-checkable order-column">
             <thead>
-                <tr role="row">
-                    <th class="table-checkbox sorting_disabled" >
-                        <div class="checker">
-                            <span><input type="checkbox" class="group-checkable"></span>
-                        </div>
+                <tr>
+                    <th class="strong" style="width: 66px;" v-if="checkColum">
+                        <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+                            <input type="checkbox" class="group-checkable" :checked="allCheck" @click="checkAll"/>
+                            <span></span>
+                        </label>
                     </th>
-                    <th class="sorting_asc">Username</th>
-                    <th class="sorting">Email</th>
-                    <th class="sorting">Status</th>
-                    <th class="sorting">Status</th>
+                    <th v-for="c in colums" :style="{ width: c.width + 'px' }">{{c.title}}</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="gradeX odd" role="row">
-                    <td>
-                        <div class="checker"><span><input type="checkbox" class="checkboxes" value="1"></span></div>
+                <tr class="odd gradeX" v-for="td in tableData">
+                    <td v-if="checkColum">
+                        <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+                            <input type="checkbox" class="checkboxes" :checked="td.checked" @click="checkOne(td)"/>
+                            <span></span>
+                        </label>
                     </td>
-                    <td class="sorting_1">coop</td>
-                    <td>
-                        <a href="mailto:userwow@gmail.com">good@gmail.com </a>
-                    </td>
-                    <td>
-                        <span class="label label-sm label-success">Approved </span>
-                    </td>
-                    <td>
-                        <span class="label label-sm label-success">Approved </span>
-                    </td>
-                </tr>
-                <tr class="gradeX even" role="row">
-                    <td>
-                      <div class="checker"><span><input type="checkbox" class="checkboxes" value="1"></span></div>
-                    </td>
-                    <td class="sorting_1">foopl</td>
-                    <td>
-                        <a href="mailto:userwow@gmail.com">good@gmail.com </a>
-                    </td>
-                    <td>
-                        <span class="label label-sm label-success">Approved </span>
-                    </td>
-                    <td>
-                        <span class="label label-sm label-success">Approved </span>
+                    <td v-for="c in colums">
+                        <span v-if="c.template">
+                        <m-button v-for="t in c.template" :btn-class="t.btnClass" :size="'xs'" @click="t.callback(td)">{{t.label}}</m-button>
+                        </span>
+                        <span v-else>{{td[c.data]}}</span>
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
 </template>
+<script>
+    import Vue from 'vue';
+    import mButton from '../button/mButton';
+    export default {
+        components: { mButton },
+        props: {
+            'colums': {
+                type: Array,
+                required: true
+            },
+            'tableData': {
+                type: Array
+            },
+            'checkColum': {
+                type: Boolean,
+                default: false
+            },
+            'checkResult': {
+                type: Array,
+                default () {
+                    return [];
+                }
+            }
+        },
+        data () {
+            return {
+                'allCheck': false
+            };
+        },
+        watch: {
+            'tableData': function (val, old) {
+                for (var td of val) {
+                    if (typeof td.checked === 'undefined') {
+                        Vue.set(td, 'checked', false);
+                    }
+                }
+                this.allCheck = false;
+            }
+        },
+        created () {
+            for (var td of this.tableData) {
+                if (typeof td.checked === 'undefined') {
+                    Vue.set(td, 'checked', false);
+                }
+            }
+        },
+        methods: {
+            checkAll () {
+                this.allCheck = !this.allCheck;
+                for (var td of this.tableData) {
+                    td.checked = this.allCheck;
+                    if (this.allCheck) this.checkResult.push(td);
+                }
+                if (!this.allCheck) this.checkResult = [];
+            },
+            checkOne (data) {
+                window.console.log(data.checked);
+                data.checked = !data.checked;
+                if (data.checked) {
+                    this.checkResult.push(data);
+                } else {
+                    var temp = [];
+                    for (var r of this.checkResult) {
+                        if (r !== data) {
+                            temp.push(r);
+                        }
+                    }
+                    this.checkResult = temp;
+                }
+            }
+        }
+    };
+</script>

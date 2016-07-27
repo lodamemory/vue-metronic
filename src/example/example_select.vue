@@ -1,49 +1,49 @@
 <template>
-    <!-- BEGIN PAGE HEADER-->
-    <h3 class="page-title">
-    Example Select Page <small>example Select page</small>
-    </h3>
-    <div class="page-bar">
-        <ul class="page-breadcrumb">
-            <li>
-                <i class="fa fa-home"></i>
-                <a href="index.html">Home</a>
-                <i class="fa fa-angle-right"></i>
-            </li>
-            <li>
-                <a href="#">UI</a>
-                <i class="fa fa-angle-right"></i>
-            </li>
-            <li>
-                <a href="#">Example Select Page</a>
-            </li>
-        </ul>
-    </div>
-    <!-- END PAGE HEADER-->
-    <!-- BEGIN PAGE CONTENT-->
+    <m-page-header :title="'Example Select Page'" :small-title="'Example Select Page'"></m-page-header>
     <div class="row">
         <div class="col-md-12">
             <m-portlet :title="'Select'" :color-type="5">
-                <m-select :data="sData" :result.sync="sResult1" :size="'large'" :label="'超大下拉选择：'"></m-select>
-                <m-select :data="sData" :result.sync="sResult2" :label="'正常下拉选择：'"></m-select>
-                <m-select :data="sData" :result.sync="sResult3" :size="'small'" :label="'小型下拉选择：'"></m-select>
-                <m-select :data="sData" :result.sync="sResult4" :size="'xsmall'" :label="'超小下拉选择：'"></m-select>
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Text</label>
+                        <div class="col-md-9">
+                            <m-select :data="sData" :result.sync="sResult1" :size="'large'" :label="'超大下拉选择：'"></m-select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Text</label>
+                        <div class="col-md-9">
+                            <m-select :data="sData" :result.sync="sResult2" :label="'正常下拉选择：'"></m-select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Text</label>
+                        <div class="col-md-9">
+                            <m-select :data="sData" :result.sync="sResult3" :size="'small'" :label="'小型下拉选择：'"></m-select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Text</label>
+                        <div class="col-md-9">
+                            <m-select :data="sData" :result.sync="sResult4" :size="'xsmall'" :label="'超小下拉选择：'"></m-select>
+                        </div>
+                    </div>
+                </form>
                 <div>{{sResult1.code}} {{sResult1.name}}</div>
                 <div>{{sResult2.code}} {{sResult2.name}}</div>
                 <div>{{sResult3.code}} {{sResult3.name}}</div>
                 <div>{{sResult4.code}} {{sResult4.name}}</div>
             </m-portlet>
         </div>
-        
     </div>
-    <!-- END PAGE CONTENT-->
 </template>
 <script>
+    import mPageHeader from '../common/mPageHeader';
     import mPortlet from '../components/portlet/mPortlet';
     import mButton from '../components/button/mButton';
     import mSelect from '../components/select/mSelect';
     export default {
-        components: { mPortlet, mSelect, mButton },
+        components: { mPageHeader, mPortlet, mSelect, mButton },
         data () {
             return {
                 sData: [
