@@ -45,7 +45,7 @@
             },
             'type': {
                 type: String,
-                default: 'light'
+                default: 'box'
             }
         },
         data () {
