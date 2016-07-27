@@ -1,24 +1,26 @@
 <template>
-<span class="select2 select2-container select2-container--bootstrap select2-container--below " :class="[selectClass, {'select2-container--focus': active, 'select2-container--open': open}]" v-el:container>
-    <span class="selection">
-        <span class="select2-selection select2-selection--single" @click.stop="openSelect">
-            <span class="select2-selection__rendered" title="{{selectName}}">{{selectName}}</span>
-            <span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span>
+<span>
+    <span class="select2 select2-container select2-container--bootstrap select2-container--below " :class="[selectClass, {'select2-container--focus': active, 'select2-container--open': open}]" v-el:container>
+        <span class="selection">
+            <span class="select2-selection select2-selection--single" @click.stop="openSelect">
+                <span class="select2-selection__rendered" title="{{selectName}}">{{selectName}}</span>
+                <span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span>
+            </span>
         </span>
+        <span class="dropdown-wrapper"></span>
     </span>
-    <span class="dropdown-wrapper"></span>
-</span>
-<span class="select2-container select2-container--bootstrap select2-container--open s-show" v-show="open" v-el:drop>
-    <span class="select2-dropdown select2-dropdown--below">
-        <span class="select2-search select2-search--dropdown">
-            <input class="select2-search__field" type="search" v-model="filterStr">
-        </span>
-        <span class="select2-results">
-        <ul class="select2-results__options" v-el:ul>
-            <li class="select2-results__option" aria-selected="false" v-for="d in data" @mouseover="mouseover($event)" @mouseout="mouseout($event)" @click.stop="valueSelect(d)">
-                {{d.name}}
-            </li>
-        </ul>
+    <span class="select2-container select2-container--bootstrap select2-container--open s-show" v-show="open" v-el:drop>
+        <span class="select2-dropdown select2-dropdown--below">
+            <span class="select2-search select2-search--dropdown">
+                <input class="select2-search__field" type="search" v-model="filterStr">
+            </span>
+            <span class="select2-results">
+            <ul class="select2-results__options" v-el:ul>
+                <li class="select2-results__option" aria-selected="false" v-for="d in data" @mouseover="mouseover($event)" @mouseout="mouseout($event)" @click.stop="valueSelect(d)">
+                    {{d.name}}
+                </li>
+            </ul>
+            </span>
         </span>
     </span>
 </span>

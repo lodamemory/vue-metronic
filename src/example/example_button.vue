@@ -58,7 +58,7 @@
                     <m-button :btn-class="'btn-info'" :icon="'glyphicon glyphicon-plus'" @click="test">增加</m-button>
                 </div>
             </m-portlet>
-            <m-portlet :title="'Button API'" :color-type="4">
+            <m-portlet :title="'Button API'" :color-type="4" :type="'light'">
                 <h4>用法：</h4>
                 <p>&lt;m-button :btn-class="'btn-primary'" :icon="'icon-user'" :is-circle="true" &gt;用户&lt;/m-button&gt;</p>
                 <m-table :colums="colums" :table-data="tableData"></m-table>

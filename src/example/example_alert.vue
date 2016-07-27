@@ -29,15 +29,17 @@
                         </div>
                     </div>
                 </form>
-                <m-alert :position="position.code" :color-type="colorType.code" :title="'哈哈哈'" :show.sync="aShow" :effect="effect.code"></m-alert>
             </m-portlet>
-            <m-portlet :title="'Alert API'" :color-type="5">
-                <h4>用法：</h4>
-                <p>&lt;m-alert :position="'topRight'" :color-type="'error'" :title="'哈哈哈'" :show.sync="aShow" :effect="'slide'"&gt;&lt;/m-alert&gt;</p>
-                <m-table :colums="colums" :table-data="tableData"></m-table>
+            <m-portlet :title="'Alert API'">
+                <div >
+                    <h4>用法：</h4>
+                    <p>&lt;m-alert :position="'topRight'" :color-type="'error'" :title="'哈哈哈'" :show.sync="aShow" :effect="'slide'"&gt;&lt;/m-alert&gt;</p>
+                    <m-table :colums="colums" :table-data="tableData"></m-table>
+                </div>
             </m-portlet>
         </div>
     </div>
+    <m-alert :position="position.code" :color-type="colorType.code" :title="'哈哈哈'" :show.sync="aShow" :effect="effect.code"></m-alert>
 </template>
 <script>
     import mPageHeader from '../common/mPageHeader';
