@@ -7,6 +7,7 @@
                 {{nomalResult.code}}
             </m-portlet>
             <m-portlet :title="'CheckBoxTree'" :color-type="4">
+                <m-button @click="treeData2 = treeData3">change</m-button>
                 <m-Tree :tree-data="treeData2" :callback="treeTest" :checkbox="true" :result.sync="result"></m-Tree>
                 <div v-for="r in result">
                     {{r.code}}
@@ -67,6 +68,36 @@
                     nodes: [
                         {icon: '', code: 'B1', name: 'B1'},
                         {icon: '', code: 'B2', name: 'B2'}
+                    ]
+                }],
+                treeData3: [{
+                    icon: '',
+                    code: 'A',
+                    name: 'A',
+                    nodes: [
+                        {icon: '', code: 'A1', name: 'A1',
+                            nodes: [
+                                {icon: '', code: 'AA1', name: 'AA1', checked: true},
+                                {icon: '', code: 'AA2', name: 'AA2'}
+                            ]
+                        },
+                        {icon: '', code: 'A2', name: 'A2'}
+                    ]
+                }, {
+                    icon: '',
+                    code: 'B',
+                    name: 'B',
+                    nodes: [
+                        {icon: '', code: 'B1', name: 'B1'},
+                        {icon: '', code: 'B2', name: 'B2'}
+                    ]
+                }, {
+                    icon: '',
+                    code: 'C',
+                    name: 'C',
+                    nodes: [
+                        {icon: '', code: 'C1', name: 'C1'},
+                        {icon: '', code: 'C2', name: 'C2'}
                     ]
                 }],
                 nomalResult: {},

@@ -82,9 +82,12 @@
                 this.allCheck = !this.allCheck;
                 for (var td of this.tableData) {
                     td.checked = this.allCheck;
-                    if (this.allCheck) this.checkResult.push(td);
+                    if (this.allCheck) {
+                        this.checkResult.push(td);
+                    } else {
+                        this.checkResult.splice(this.checkResult.indexOf(td), 1);
+                    };
                 }
-                if (!this.allCheck) this.checkResult = [];
             },
             checkOne (data) {
                 window.console.log(data.checked);
@@ -92,13 +95,7 @@
                 if (data.checked) {
                     this.checkResult.push(data);
                 } else {
-                    var temp = [];
-                    for (var r of this.checkResult) {
-                        if (r !== data) {
-                            temp.push(r);
-                        }
-                    }
-                    this.checkResult = temp;
+                    this.checkResult.splice(this.checkResult.indexOf(data), 1);
                 }
             }
         }

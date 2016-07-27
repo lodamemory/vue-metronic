@@ -91,13 +91,7 @@
                 if (checked) {
                     this.result.push(data);
                 } else {
-                    var temp = [];
-                    for (var r of this.result) {
-                        if (r !== data) {
-                            temp.push(r);
-                        }
-                    }
-                    this.result = temp;
+                    this.result.splice(this.result.indexOf(data), 1);
                 }
             },
             mouseout (event) {
