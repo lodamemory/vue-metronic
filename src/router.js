@@ -6,6 +6,7 @@ import ExampleSelect from './example/example_select';
 import ExamplePicker from './example/example_picker';
 import ExampleTree from './example/example_tree';
 import ExampleTable from './example/example_table';
+import ExampleChart from './example/example_chart';
 import Doc from './example/doc.vue';
 export default function (router) {
     router.map({
@@ -50,6 +51,10 @@ export default function (router) {
                 '/table': {
                     name: 'table',
                     component: ExampleTable
+                },
+                '/chart': {
+                    name: 'chart',
+                    component: ExampleChart
                 }
             }
         }
