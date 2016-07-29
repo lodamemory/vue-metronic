@@ -70,12 +70,8 @@ module.exports = {
         loader: 'vue-html'
       },
       {
-        test: /\.(png|jpe?g|gif|svg|woff2?|eot|ttf|otf)(\?.*)?$/,
-        loader: 'url',
-        query: {
-          limit: 10000,
-          name: path.join(config.build.assetsSubDirectory, '[name].[hash:7].[ext]')
-        }
+        test: /\.(png|jpe?g|gif|svg|woff|woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader: 'url-loader?limit=8192&name=static/[name].[hash:7].[ext]'
       }
     ]
   },

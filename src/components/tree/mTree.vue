@@ -31,13 +31,18 @@
         created () {
             this.treeAppend(this.treeData);
         },
+        watch: {
+            'treeData': function (v, o) {
+                this.treeAppend(v);
+            }
+        },
         methods: {
             treeAppend (data) {
                 for (var d of data) {
                     if (typeof d.checked === 'undefined') {
                         Vue.set(d, 'checked', false);
-                    } else {
-                        this.result.push(d);
+                    } else if (d.checked) {
+                        if (this.result.indexOf(d) === -1) this.result.push(d);
                     }
                     if (d.nodes) {
                         this.treeAppend(d.nodes);
