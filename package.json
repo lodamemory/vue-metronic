@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "vue": "^1.0.21",
-    "babel-runtime": "^6.0.0"
+    "babel-runtime": "^6.0.0",
+    "echarts": "^3.2.2"
   },
   "devDependencies": {
     "lodash": "^4.2.0",
