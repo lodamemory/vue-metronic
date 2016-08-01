@@ -3,7 +3,7 @@
     <span class="select2 select2-container select2-container--bootstrap select2-container--below " :class="[selectClass, {'select2-container--focus': active, 'select2-container--open': open}]" v-el:container>
         <span class="selection">
             <span class="select2-selection select2-selection--single" @click.stop="openSelect">
-                <span class="select2-selection__rendered" title="{{selectName}}">{{selectName}}</span>
+                <span class="select2-selection__rendered" title="{{selectName}}">{{result.name}}</span>
                 <span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span>
             </span>
         </span>
@@ -16,7 +16,7 @@
             </span>
             <span class="select2-results">
             <ul class="select2-results__options" v-el:ul>
-                <li class="select2-results__option" aria-selected="false" v-for="d in data" @mouseover="mouseover($event)" @mouseout="mouseout($event)" @click.stop="valueSelect(d)">
+                <li class="select2-results__option" aria-selected="false" v-for="d in sData" @mouseover="mouseover($event)" @mouseout="mouseout($event)" @click.stop="valueSelect(d)">
                     {{d.name}}
                 </li>
             </ul>
@@ -48,7 +48,7 @@
                 active: false,
                 selectName: '',
                 close: false,
-                currentLi: '',
+                currentLi: null,
                 filterStr: '',
                 sData: [],
                 selectClass: {
@@ -76,16 +76,16 @@
             openSelect () {
                 if (this.open) {
                     this.open = false;
-                    this.$els.ul.children[this.currentLi].attributes[1].value = false;
+                    this.currentLi.attributes[1].value = false;
                 } else {
                     this.open = true;
                     this.active = true;
                     this.filterStr = '';
                     this.$els.drop.style.width = this.$els.container.offsetWidth + 'px';
-                    for (var index in this.data) {
-                        if (this.data[index] === this.result) {
+                    for (var index in this.sData) {
+                        if (this.sData[index] === this.result) {
                             this.$els.ul.children[index].attributes[1].value = true;
-                            this.currentLi = index;
+                            this.currentLi = this.$els.ul.children[index];
                             break;
                         }
                     }
@@ -95,7 +95,7 @@
                 this.result = data;
                 this.selectName = data.name;
                 this.close = true;
-                if (this.currentLi !== '') this.$els.ul.children[this.currentLi].attributes[1].value = false;
+                if (this.currentLi !== null) this.currentLi.attributes[1].value = false;
                 this.open = false;
             },
             deleteValue () {
@@ -113,13 +113,16 @@
         watch: {
             'filterStr': function (now, old) {
                 let temp = [];
-                for (var index in this.sData) {
-                    var key = this.sData[index].name;
+                for (var index in this.data) {
+                    var key = this.data[index].name;
                     if (key.includes(now)) {
-                        temp.push(this.sData[index]);
+                        temp.push(this.data[index]);
                     }
                 }
-                this.data = temp;
+                this.sData = temp;
+            },
+            'data': function (now, old) {
+                this.sData = now;
             }
         }
     };

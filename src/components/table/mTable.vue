@@ -23,8 +23,8 @@
                     <td v-for="c in colums">
                         <span v-if="c.template" v-for="t in c.template">
                             <m-button v-if="t.type === 'button'" :btn-class="t.class" :size="'xs'" @click="t.callback(td)">{{t.label}}</m-button>
-                            <a v-if="t.type === 'a'" :class="t.class" :size="'xs'" @click="t.callback(td)">{{t.label}}</a>
-                            <span v-if="t.type === 'label'" class="label label-sm label-success" :class="t.class">{{t.label}}</span>
+                            <a v-if="t.type === 'a'" :class="t.class" :size="'xs'" @click="t.callback(td)">{{td[c.data]}}</a>
+                            <span v-if="t.type === 'label'" class="label label-sm label-success" :class="t.class">{{td[c.data]}}</span>
                         </span>
                         <span v-if="!c.template">{{td[c.data]}}</span>
                     </td>
