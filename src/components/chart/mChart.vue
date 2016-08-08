@@ -14,9 +14,16 @@
                 type: Object
             }
         },
+        ready () {
+            this.init();
+        },
         watch: {
             'option': function (v, o) {
-                // 基于准备好的dom，初始化echarts实例
+                this.init();
+            }
+        },
+        methods: {
+            init () {
                 var myChart = echarts.init(this.$els.echarts);
                 // 绘制图表
                 window.console.log(this.option);
