@@ -82,6 +82,7 @@
         methods: {
             checkAll () {
                 this.allCheck = !this.allCheck;
+                this.checkResult = [];
                 for (var td of this.tableData) {
                     td.checked = this.allCheck;
                     if (this.allCheck) {

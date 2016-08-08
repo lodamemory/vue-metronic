@@ -5,27 +5,33 @@
             <m-portlet :title="'Select'" :color-type="5">
                 <form class="form-horizontal">
                     <div class="form-group">
-                        <label class="col-md-3 control-label">Text</label>
+                        <label class="col-md-3 control-label">单选框</label>
                         <div class="col-md-9">
                             <m-select :data="sData" :result.sync="sResult1" :size="'large'" :label="'超大下拉选择：'"></m-select>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label">Text</label>
+                        <label class="col-md-3 control-label">单选框</label>
                         <div class="col-md-9">
                             <m-select :data="sData" :result.sync="sResult2" :label="'正常下拉选择：'"></m-select>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label">Text</label>
+                        <label class="col-md-3 control-label">单选框</label>
                         <div class="col-md-9">
                             <m-select :data="sData" :result.sync="sResult3" :size="'small'" :label="'小型下拉选择：'"></m-select>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label">Text</label>
+                        <label class="col-md-3 control-label">单选框</label>
                         <div class="col-md-9">
                             <m-select :data="sData" :result.sync="sResult4" :size="'xsmall'" :label="'超小下拉选择：'"></m-select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">多选框</label>
+                        <div class="col-md-9">
+                            <m-multi-select :data="sData" :result.sync="sResult5"></m-multi-select>
                         </div>
                     </div>
                 </form>
@@ -33,6 +39,7 @@
                 <div>{{sResult2.code}} {{sResult2.name}}</div>
                 <div>{{sResult3.code}} {{sResult3.name}}</div>
                 <div>{{sResult4.code}} {{sResult4.name}}</div>
+                <div>{{sResult5}}</div>
             </m-portlet>
         </div>
     </div>
@@ -42,8 +49,9 @@
     import mPortlet from '../components/portlet/mPortlet';
     import mButton from '../components/button/mButton';
     import mSelect from '../components/select/mSelect';
+    import mMultiSelect from '../components/select/mMultiSelect';
     export default {
-        components: { mPageHeader, mPortlet, mSelect, mButton },
+        components: { mPageHeader, mPortlet, mSelect, mButton, mMultiSelect },
         data () {
             return {
                 sData: [
@@ -55,7 +63,8 @@
                 sResult1: {},
                 sResult2: {},
                 sResult3: {},
-                sResult4: {}
+                sResult4: {},
+                sResult5: []
             };
         }
     };
