@@ -25,7 +25,8 @@
                     <div class="form-group">
                         <label class="col-md-3 control-label"></label>
                         <div class="col-md-9">
-                            <m-button :btn-class="'blue-hoki btn-outline'" @click="aShow = true">basic alert</m-button>
+                            <m-button :btn-class="'blue-hoki btn-outline'" @click="alertShow">basic alert</m-button>
+                            {{aShow}}
                         </div>
                     </div>
                 </form>
@@ -39,7 +40,7 @@
             </m-portlet>
         </div>
     </div>
-    <m-alert :position="position.code" :color-type="colorType.code" :title="'哈哈哈'" :show.sync="aShow" :effect="effect.code"></m-alert>
+    <m-alert :position="position.code" :color-type="colorType.code" :title="'哈哈哈'" :show="aShow" :effect="effect.code"></m-alert>
 </template>
 <script>
     import mPageHeader from '../common/mPageHeader';
@@ -94,6 +95,15 @@
                     { name: 'message', type: 'String', choosen: '无', default: '成功！', require: 'false', remark: '' }
                 ]
             };
+        },
+        methods: {
+            alertShow () {
+                this.aShow = true;
+                setTimeout(() => {
+                    window.console.log('111');
+                    this.aShow = false;
+                }, 2000);
+            }
         }
     };
 </script>

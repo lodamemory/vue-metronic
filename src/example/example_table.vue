@@ -21,11 +21,11 @@
         data () {
             return {
                 colums: [
-                    { data: 'a1', title: 'A1', template: [ { 'btnClass': 'red btn-outline', 'label': '修改', 'callback': this.edit }, { 'btnClass': 'red', 'label': '修改', 'callback': this.edit } ] },
+                    { data: 'a1', title: 'A1' },
                     { data: 'a2', title: 'A2' },
                     { data: 'a3', title: 'A3' },
-                    { data: 'a4', title: 'A4' },
-                    { data: 'a5', title: 'A5', template: [ { 'btnClass': 'red btn-outline', 'label': '修改', 'callback': this.edit }, { 'btnClass': 'red', 'label': '修改', 'callback': this.edit } ] }
+                    { data: 'a4', title: 'A4', template: [ { type: 'label', 'class': 'label-warning', 'label': 'label' }, { type: 'a', 'label': '链接', 'callback': this.edit } ] },
+                    { data: 'a5', title: 'A5', template: [ { type: 'button', 'class': 'red btn-outline', 'label': '修改', 'callback': this.edit } ] }
                 ],
                 tableData: [
                     { a1: '11', a2: '2', a3: '3', a4: '4', a5: '5' },

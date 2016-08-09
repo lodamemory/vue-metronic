@@ -1,6 +1,6 @@
 <template>
     <div class="table-scrollable">
-        <table class="table table-striped table-bordered table-hover table-checkable order-column">
+        <table class="table table-striped table-bordered table-hover table-checkable order-column dataTable">
             <thead>
                 <tr>
                     <th class="strong" style="width: 66px;" v-if="checkColum">
@@ -21,10 +21,12 @@
                         </label>
                     </td>
                     <td v-for="c in colums">
-                        <span v-if="c.template">
-                        <m-button v-for="t in c.template" :btn-class="t.btnClass" :size="'xs'" @click="t.callback(td)">{{t.label}}</m-button>
+                        <span v-if="c.template" v-for="t in c.template">
+                            <m-button v-if="t.type === 'button'" :btn-class="t.class" :size="'xs'" @click="t.callback(td)">{{t.label}}</m-button>
+                            <a v-if="t.type === 'a'" :class="t.class" :size="'xs'" @click="t.callback(td)">{{td[c.data]}}</a>
+                            <span v-if="t.type === 'label'" class="label label-sm label-success" :class="t.class">{{td[c.data]}}</span>
                         </span>
-                        <span v-else>{{td[c.data]}}</span>
+                        <span v-if="!c.template">{{td[c.data]}}</span>
                     </td>
                 </tr>
             </tbody>
@@ -80,6 +82,7 @@
         methods: {
             checkAll () {
                 this.allCheck = !this.allCheck;
+                this.checkResult = [];
                 for (var td of this.tableData) {
                     td.checked = this.allCheck;
                     if (this.allCheck) {

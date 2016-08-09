@@ -58,7 +58,6 @@
         watch: {
             'show': function (v, o) {
                 let self = this;
-                window.console.log(this.toastClass);
                 if (v) {
                     setTimeout(function () {
                         self.show = false;

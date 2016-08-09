@@ -7,10 +7,10 @@ module.exports = {
     assetsRoot: path.resolve(__dirname, 'dist'),
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    productionSourceMap: true
+    productionSourceMap: false
   },
   dev: {
-    port: 8088,
+    port: 8089,
     proxyTable: {}
   }
 }
