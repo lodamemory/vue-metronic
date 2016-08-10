@@ -8,6 +8,7 @@ import ExamplePicker from './example/example_picker';
 import ExampleTree from './example/example_tree';
 import ExampleTable from './example/example_table';
 import ExampleChart from './example/example_chart';
+import ExampleCheckbox from './example/example_checkbox';
 import Doc from './example/doc.vue';
 export default function (router) {
     router.map({
@@ -60,6 +61,10 @@ export default function (router) {
                 '/chart': {
                     name: 'chart',
                     component: ExampleChart
+                },
+                '/checkbox': {
+                    name: 'checkbox',
+                    component: ExampleCheckbox
                 }
             }
         }

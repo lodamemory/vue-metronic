@@ -1,5 +1,5 @@
 <template>
-    <m-page-header :title="'Example Modal Page'" :small-title="'Example Modal Page'"></m-page-header>
+    <m-page-header :title="'Example Chart Page'" :small-title="'Example Chart Page'"></m-page-header>
     <div class="row">
         <div class="col-md-12">
             <m-portlet :title="'Modal'" :color-type="5">
