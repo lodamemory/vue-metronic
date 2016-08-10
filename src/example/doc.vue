@@ -14,6 +14,7 @@
                       subMenu: [
                           {name: 'Buttons', url: 'buttons', icon: ''},
                           {name: 'Alert', url: 'alert', icon: ''},
+                          {name: 'Portlet', url: 'portlet', icon: ''},
                           {name: 'Modal', url: 'modal', icon: ''},
                           {name: 'Select', url: 'select', icon: ''},
                           {name: 'Picker', url: 'picker', icon: ''},
