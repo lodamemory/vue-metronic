@@ -78,7 +78,7 @@
                     for (var index in this.data) {
                         this.$els.ul.children[index].attributes[1].value = false;
                         for (var r in this.result) {
-                            if (this.data[index] === this.result[r]) {
+                            if (this.data[index].code === this.result[r].code) {
                                 this.$els.ul.children[index].attributes[1].value = true;
                                 break;
                             }
@@ -87,7 +87,14 @@
                 }
             },
             valueSelect (data) {
-                this.result.push(data);
+                let flag = true;
+                for (var index in this.result) {
+                    if (data.code === this.result[index].code) {
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag) this.result.push(data);
                 this.close = true;
                 this.open = false;
             },
