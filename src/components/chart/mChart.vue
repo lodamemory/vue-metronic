@@ -5,6 +5,7 @@
     import echarts from 'echarts/lib/echarts';
     import 'echarts/lib/chart/line';
     import 'echarts/lib/chart/bar';
+    import 'echarts/lib/chart/pie';
     import 'echarts/lib/component/tooltip';
     import 'echarts/lib/component/legend';
     import 'echarts/lib/component/title';
@@ -30,7 +31,7 @@
                 myChart.setOption({
                     title: this.option.title || {},
                     tooltip: this.option.tooltip || {},
-                    color: ['rgb(103, 183, 220)', 'rgb(183, 224, 33)', ''],
+                    color: ['#41b883', '#c23531', '#2f4554', '#61a0a8', '#d48265', '#91c7ae', '#749f83', '#ca8622', '#bda29a', '#6e7074', '#546570', '#c4ccd3'],
                     grid: {
                         left: '3%',
                         right: '4%',
