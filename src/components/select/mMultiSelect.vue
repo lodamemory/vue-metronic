@@ -25,6 +25,7 @@
     </span>
 </template>
 <script>
+    import EventListener from '../util/eventListener';
     export default {
         props: {
             'data': {
@@ -54,6 +55,17 @@
                 }
             };
         },
+        ready () {
+            this._closeEvent = EventListener.listen(window, 'click', (e) => {
+                if (!this.$el.contains(e.target)) {
+                    this.open = false;
+                    this.active = false;
+                }
+            });
+        },
+        beforeDestroy () {
+            this._closeEvent.remove();
+        },
         methods: {
             openSelect () {
                 if (this.open) {
@@ -65,8 +77,8 @@
                     this.$els.drop.style.width = this.$els.container.offsetWidth + 'px';
                     for (var index in this.data) {
                         this.$els.ul.children[index].attributes[1].value = false;
-                        for (var r of this.result) {
-                            if (this.data[index] === r) {
+                        for (var r in this.result) {
+                            if (this.data[index].code === this.result[r].code) {
                                 this.$els.ul.children[index].attributes[1].value = true;
                                 break;
                             }
@@ -75,7 +87,14 @@
                 }
             },
             valueSelect (data) {
-                this.result.push(data);
+                let flag = true;
+                for (var index in this.result) {
+                    if (data.code === this.result[index].code) {
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag) this.result.push(data);
                 this.close = true;
                 this.open = false;
             },

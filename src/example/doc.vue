@@ -17,6 +17,7 @@
                           {name: 'Portlet', url: 'portlet', icon: ''},
                           {name: 'Modal', url: 'modal', icon: ''},
                           {name: 'Select', url: 'select', icon: ''},
+                          {name: 'Checkbox', url: 'checkbox', icon: ''},
                           {name: 'Picker', url: 'picker', icon: ''},
                           {name: 'Tree', url: 'tree', icon: ''},
                           {name: 'Table', url: 'table', icon: ''},
