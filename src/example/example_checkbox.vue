@@ -31,7 +31,7 @@
         components: { mPageHeader, mPortlet, mButton, mCheckbox },
         data () {
             return {
-                checkData: [{code: 1, name: 'A'}, {code: 2, name: 'B'}],
+                checkData: [{code: 'a', name: 'checkA'}, {code: 'b', name: 'checkB'}, {code: 'c', name: 'checkC'}, {code: 'd', name: 'checkD'}],
                 checkResult: []
             };
         }

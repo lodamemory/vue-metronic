@@ -9,7 +9,6 @@
     </div>
 </template>
 <script>
-    import Vue from 'vue';
     export default {
         props: {
             'data': {
@@ -51,11 +50,11 @@
                 }
             },
             checkAppend (data) {
-                for (var d of data) {
-                    if (typeof d.checked === 'undefined') {
-                        Vue.set(d, 'checked', false);
-                    } else if (d.checked) {
-                        if (this.result.indexOf(d.code) === -1) this.result.push(d.code);
+                for (var i in data) {
+                    if (typeof data[i].checked === 'undefined') {
+                        this.$set('data[' + i + '].checked', false);
+                    } else if (data[i].checked) {
+                        if (this.result.indexOf(data[i].code) === -1) this.result.push(data[i].code);
                     }
                 }
             }
