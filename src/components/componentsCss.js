@@ -11,6 +11,7 @@ import '../assets/global/plugins/bootstrap-toastr/toastr.min.css';
 // select
 import '../assets/global/plugins/select2/css/select2.min.css';
 import '../assets/global/plugins/select2/css/select2-bootstrap.min.css';
+import '../assets/global/plugins/jquery-multi-select/css/multi-select.css';
 // tree
 import '../assets/global/plugins/jstree/dist/themes/default/style.min.css';
 // table

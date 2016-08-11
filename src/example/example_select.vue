@@ -34,12 +34,19 @@
                             <m-multi-select :data="sData" :result.sync="sResult5"></m-multi-select>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">多选列表框</label>
+                        <div class="col-md-9">
+                            <m-selectlist :data="sData" :result.sync="sResult6"></m-selectlist>
+                        </div>
+                    </div>
                 </form>
                 <div>{{sResult1.code}} {{sResult1.name}}</div>
                 <div>{{sResult2.code}} {{sResult2.name}}</div>
                 <div>{{sResult3.code}} {{sResult3.name}}</div>
                 <div>{{sResult4.code}} {{sResult4.name}}</div>
                 <div>{{sResult5}}</div>
+                <div>{{sResult6}}</div>
             </m-portlet>
         </div>
     </div>
@@ -50,8 +57,9 @@
     import mButton from '../components/button/mButton';
     import mSelect from '../components/select/mSelect';
     import mMultiSelect from '../components/select/mMultiSelect';
+    import mSelectlist from '../components/select/mSelectlist';
     export default {
-        components: { mPageHeader, mPortlet, mSelect, mButton, mMultiSelect },
+        components: { mPageHeader, mPortlet, mSelect, mButton, mMultiSelect, mSelectlist },
         data () {
             return {
                 sData: [
@@ -64,7 +72,8 @@
                 sResult2: {},
                 sResult3: {},
                 sResult4: {},
-                sResult5: []
+                sResult5: [],
+                sResult6: []
             };
         }
     };
