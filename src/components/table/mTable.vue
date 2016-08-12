@@ -13,7 +13,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="odd gradeX" v-for="td in tableData">
+                <tr class="odd gradeX" v-for="td in tableData" @click="columClick($event, td, $index)" :class="{'clicked': clickIndex === $index}">
                     <td v-if="checkColum">
                         <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
                             <input type="checkbox" class="checkboxes" :checked="td.checked" @click="checkOne(td)"/>
@@ -43,6 +43,11 @@
                 type: Array,
                 required: true
             },
+            'columCallback': {
+                type: Function,
+                required: false,
+                default () {}
+            },
             'tableData': {
                 type: Array
             },
@@ -59,7 +64,8 @@
         },
         data () {
             return {
-                'allCheck': false
+                'allCheck': false,
+                clickIndex: -1
             };
         },
         watch: {
@@ -70,6 +76,7 @@
                     }
                 }
                 this.allCheck = false;
+                this.clickIndex = -1;
             }
         },
         created () {
@@ -100,7 +107,15 @@
                 } else {
                     this.checkResult.splice(this.checkResult.indexOf(data), 1);
                 }
+            },
+            columClick (event, data, index) {
+                if (this.clickIndex === index) return;
+                this.clickIndex = index;
+                this.columCallback(data);
             }
         }
     };
 </script>
+<style lang="css">
+    .clicked {background-color: #EAF7EC !important;}
+</style>
