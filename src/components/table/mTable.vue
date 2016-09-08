@@ -3,7 +3,7 @@
         <table class="table table-striped table-bordered table-hover table-checkable order-column dataTable">
             <thead>
                 <tr>
-                    <th class="strong" style="width: 66px;" v-if="checkColum">
+                    <th class="strong" style="width: 66px;" v-show="checkColum">
                         <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
                             <input type="checkbox" class="group-checkable" :checked="allCheck" @click="checkAll"/>
                             <span></span>
@@ -14,7 +14,7 @@
             </thead>
             <tbody>
                 <tr class="odd gradeX" v-for="td in tableData" @click="columClick($event, td, $index)" :class="{'clicked': clickIndex === $index}">
-                    <td v-if="checkColum">
+                    <td v-show="checkColum">
                         <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
                             <input type="checkbox" class="checkboxes" :checked="td.checked" @click="checkOne(td)"/>
                             <span></span>
@@ -26,7 +26,7 @@
                             <a v-if="t.type === 'a'" :class="t.class" :size="'xs'" @click="t.callback(td)">{{td[c.data]}}</a>
                             <span v-if="t.type === 'label'" class="label label-sm label-success" :class="t.class">{{td[c.data]}}</span>
                         </span>
-                        <span v-if="!c.template">{{td[c.data]}}</span>
+                        <span v-if="!c.template" :style="{ color: typeof c.color === 'string' || typeof c.color === 'undefined'? c.color: c.color[td[c.data]] }"><i :class="typeof c.icon === 'string' || typeof c.icon === 'undefined'? c.icon: c.icon[td[c.data]]"></i>{{td[c.data]}}</span>
                     </td>
                 </tr>
             </tbody>
@@ -60,12 +60,15 @@
                 default () {
                     return [];
                 }
+            },
+            'clickIndex': {
+                type: Number,
+                default: -1
             }
         },
         data () {
             return {
-                'allCheck': false,
-                clickIndex: -1
+                'allCheck': false
             };
         },
         watch: {
@@ -76,7 +79,7 @@
                     }
                 }
                 this.allCheck = false;
-                this.clickIndex = -1;
+                // this.clickIndex = -1;
             }
         },
         created () {

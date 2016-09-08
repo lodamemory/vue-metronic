@@ -9,6 +9,7 @@
     import 'echarts/lib/component/tooltip';
     import 'echarts/lib/component/legend';
     import 'echarts/lib/component/title';
+    import EventListener from '../util/eventListener';
     export default {
         props: {
             option: {
@@ -17,6 +18,12 @@
         },
         ready () {
             this.init();
+            this._resize = EventListener.listen(window, 'resize', (e) => {
+                this.init();
+            });
+        },
+        beforeDestroy () {
+            this._resize.remove();
         },
         watch: {
             'option': function (v, o) {
@@ -27,12 +34,11 @@
             init () {
                 var myChart = echarts.init(this.$els.echarts);
                 // 绘制图表
-                window.console.log(this.option);
                 myChart.setOption({
                     title: this.option.title || {},
                     tooltip: this.option.tooltip || {},
                     color: ['#41b883', '#c23531', '#2f4554', '#61a0a8', '#d48265', '#91c7ae', '#749f83', '#ca8622', '#bda29a', '#6e7074', '#546570', '#c4ccd3'],
-                    grid: {
+                    grid: this.option.grid || {
                         left: '3%',
                         right: '4%',
                         bottom: '3%',

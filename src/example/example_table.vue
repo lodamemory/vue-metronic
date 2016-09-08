@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-md-12">
             <m-portlet :title="'NomalTable'" :color-type="5">
-                <m-table :colums="colums" :table-data="tableData" :check-colum="true" :check-result.sync="checkResult"></m-table>
+                <m-table :colums="colums" :table-data="tableData" :check-colum="true" :check-result.sync="checkResult" ></m-table>
                 <m-page :total-count="totalCount" :now-page.sync="nowPage"></m-page>
                 {{checkResult}}
             </m-portlet>
@@ -21,7 +21,7 @@
         data () {
             return {
                 colums: [
-                    { data: 'a1', title: 'A1' },
+                    { data: 'a1', title: 'A1', color: {'11': 'red', '111': 'blue', '1111': 'green'}, icon: {'11': 'icon-diamond', '111': 'icon-speech', '1111': 'icon-home'} },
                     { data: 'a2', title: 'A2' },
                     { data: 'a3', title: 'A3' },
                     { data: 'a4', title: 'A4', template: [ { type: 'label', 'class': 'label-warning', 'label': 'label' }, { type: 'a', 'label': '链接', 'callback': this.edit } ] },
